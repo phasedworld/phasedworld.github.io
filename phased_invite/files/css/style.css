@@ -1,0 +1,343 @@
+/* ------------------------------------------------
+   RESET & BASE
+------------------------------------------------ */
+@charset "UTF-8";
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 100;
+	src: local('SUIT Thin'), url('./files/font/SUIT-Thin.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 200;
+	src: local('SUIT ExtraLight'), url('./files/font/SUIT-ExtraLight.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 300;
+	src: local('SUIT Light'), url('./files/font/SUIT-Light.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 400;
+	src: local('SUIT Regular'), url('./files/font/SUIT-Regular.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 500;
+	src: local('SUIT Medium'), url('./files/font/SUIT-Medium.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 600;
+	src: local('SUIT SemiBold'), url('./files/font/SUIT-SemiBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 700;
+	src: local('SUIT Bold'), url('./files/font/SUIT-Bold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 800;
+	src: local('SUIT ExtraBold'), url('./files/font/SUIT-ExtraBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 900;
+	src: local('SUIT Heavy'), url('./files/font/SUIT-Heavy.woff2') format('woff2');
+}
+
+html { font-size: 16px; }
+@media (min-width: 768px) {
+    html { font-size: 18px; }
+}
+
+body {
+  margin: 0; padding: 0;
+  color: #333;
+  font-family: 'SUIT', sans-serif;
+  background: #fcfcfc; /* 미색 */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 타이틀용 명조체 (감성적인 느낌) */
+h2, h3, .invitation-msg {  }
+
+h2 { font-size: 2.2rem; font-weight: 800; margin: 0; }
+h3 {
+  font-size: 1.2rem; 
+  color: #8a8583;
+  margin-bottom: 30px; 
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ------------------------------------------------
+   LAYOUT
+------------------------------------------------ */
+.wrapper {
+  width: 100%; max-width: 500px; /* 모바일 최적 너비 제한 */
+  margin: 0 auto;
+  background: #fff;
+}
+
+section {
+  padding: 80px 24px; /* 여백을 넉넉하게 (모던함의 핵심) */
+  text-align: center;
+}
+
+#gallery-pop {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#gallery-pop.show {
+  display: block;
+}
+
+/* Swiper 컨테이너 */
+#gallery-pop .swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+/* Swiper 구조 핵심 */
+#gallery-pop .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#gallery-pop .swiper-slide {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  
+  position:relative;
+}
+
+/* 실제 이미지 프레임 */
+#gallery-pop .slide-inner {
+  width: calc(100vw - 10px);   /* 좌우 여백 */
+  height: calc(100dvh - 60px); /* 상하 여백 */
+
+  min-height: 50%;
+  max-width: 100%;
+  max-height: 80%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  border-radius: 6px;
+  
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+
+/* ------------------------------------------------
+   MAIN (HERO)
+------------------------------------------------ */
+#main {
+  max-height: 100vh;
+  padding: 0;
+}
+
+.main-wrapper{
+	width: 100%; max-width: 500px; /* 모바일 최적 너비 제한 */
+	height:100%;
+  	margin: 0 auto;
+	display:flex;
+	flex-direction:column;
+	background:
+	linear-gradient(rgba(0,0,0,0.0) 70%, rgba(255,255,255,0.1), rgba(255,255,255,0.4)),
+	url('../../files/img/20.jpg') center/cover no-repeat;
+}
+
+.main-divider.fill-height{
+	flex:1;
+}
+
+.main-info-wrapper{
+	color:#fff;
+	/* padding:64px 32px; */
+	padding:40px;
+	font-size: 18px;
+}
+
+.main-info {
+	display:flex;
+	justify-content:space-between;
+}
+/* ------------------------------------------------
+   INTRO (INVITATION)
+------------------------------------------------ */
+.invitation-msg {
+  font-size: 1.05rem;
+  line-height: 2.2; /* 줄간격을 넓게 */
+  color: #555;
+  word-break: keep-all;
+}
+
+/* ------------------------------------------------
+   CALENDAR
+------------------------------------------------ */
+.calendar-wrapper { margin: 20px auto 40px; }
+.calendar { 
+  width: 100%; max-width: 320px; 
+  margin: 0 auto; 
+  border-collapse: collapse; 
+  font-family: 'Noto Sans KR', sans-serif; /* 숫자는 산세리프가 깔끔 */
+}
+
+.calendar th {
+  font-weight: 400; color: #999; font-size: 0.85rem;
+  padding-bottom: 15px;
+}
+.calendar td {
+  width: 14.28%; height: 46px;
+  text-align: center; font-size: 0.95rem; color: #444;
+}
+
+/* 일요일 빨강, 토요일 파랑 등 색상 제거 -> 모던함은 흑백/그레이톤 유지 */
+.calendar td:nth-child(1) { color: #d9534f; } /* 일요일만 포인트 */
+
+/* D-DAY 스타일: 촌스러운 핑크 원 -> 깔끔한 검정/진회색 원 */
+.d-day {
+  position: relative;
+  font-weight: 700; color: #fff !important;
+  z-index: 1;
+}
+.d-day::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 32px; height: 32px;
+  background: #333; /* 모던한 차콜색 */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.calendar-info { margin: 8px 0; font-size: 1.1rem; color: #333; }
+.info-date { font-weight: 500; margin-bottom: 4px; }
+.info-place { font-size: 0.95rem; color: #777; font-weight: 300; }
+
+/* ------------------------------------------------
+   GALLERY (PHOTO GRID)
+------------------------------------------------ */
+#pic{padding:80px 0px;}
+
+.gallery-preview {
+  width: 100%;
+  aspect-ratio: 4 / 5;  /* 4:5 비율 */
+  margin: 0 auto;
+  overflow: hidden;
+  position:relative;
+  transition: transform .3s ease, opacity .3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-preview:hover {
+  /* background: #000082; */
+}
+
+.gallery-preview > video{
+  width:100%; height:100%; position:absolute; left:0px; top:0px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-gallery{
+  z-index:3;
+  display: inline-block;
+  background: #f7f7f740; color: #333;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem; cursor: pointer;
+  transition: all 0.2s;
+  margin-top:90%;
+}
+
+.pic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px; /* 간격 좁히기 */
+}
+.pic-grid div {
+  width: 100%; aspect-ratio: 1 / 1.2; /* 세로가 긴 비율 */
+  background-color: #eee;
+  border-radius: 4px; /* 살짝 둥글게 */
+  background-position: center; background-size: cover;
+}
+
+/* ------------------------------------------------
+   LOCATION & MAP
+------------------------------------------------ */
+#map {
+  width: 100%; height: 350px;
+  background: #f0f0f0;
+  border-radius: 8px; /* 지도 모서리 둥글게 */
+  margin-bottom: 30px;
+}
+
+.addr-text {
+  font-size: 1rem; color: #444; margin-bottom: 20px;
+}
+
+.btn-copy {
+  display: inline-block;
+  background: #f7f7f7; color: #333;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-copy:active { background: #eee; transform: scale(0.98); }
+
+.nav-buttons {
+  margin-top: 30px;
+  display: flex; gap: 8px;
+  flex-direction: column;
+}
+
+@media (min-width: 320px) {
+  .nav-buttons { flex-direction: row; justify-content: center; }
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 14px 0;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+.nav-btn:hover { opacity: 0.9; }
+
+/* ------------------------------------------------
+   ANIMATION
+------------------------------------------------ */
+.fade-section {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.fade-section.visible { opacity: 1; transform: translateY(0); }
