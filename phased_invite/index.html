@@ -13,7 +13,7 @@
 
 </head>
 <body>
-
+<div class="wrapper">
 <script>
 window.addEventListener('load', () => {
 	$("#main").css("height",window.innerHeight);
@@ -94,38 +94,35 @@ window.addEventListener('load', () => {
 
   <!-- 사진 -->
   <section id="pic" class="fade-section visible">
-  <h3>갤러리</h3>
-  	<div class="wrapper">
-	    <div class="pic-grid">
-	      <div onclick="openGallery(1);" style="background:url('./files/img/1.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(2);" style="background:url('./files/img/2.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(3);" style="background:url('./files/img/3.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(4);" style="background:url('./files/img/4.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(5);" style="background:url('./files/img/5.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/6.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/7.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/8.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/9.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/10.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(1);" style="background:url('./files/img/11.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(2);" style="background:url('./files/img/12.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(3);" style="background:url('./files/img/13.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(4);" style="background:url('./files/img/14.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(5);" style="background:url('./files/img/15.png') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/16.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/17.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/18.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/19.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(6);" style="background:url('./files/img/20.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(1);" style="background:url('./files/img/21.jpg') center/cover no-repeat;"></div>
-	      <div onclick="openGallery(2);" style="background:url('./files/img/22.jpg') center/cover no-repeat;"></div>
-	    </div>
-	</div>
+  	<h3>갤러리</h3>
+    <div class="pic-grid">
+      <div onclick="openGallery(1);" style="background:url('./files/img/1.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(2);" style="background:url('./files/img/2.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(3);" style="background:url('./files/img/3.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(4);" style="background:url('./files/img/4.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(5);" style="background:url('./files/img/5.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/6.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/7.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/8.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/9.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/10.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(1);" style="background:url('./files/img/11.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(2);" style="background:url('./files/img/12.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(3);" style="background:url('./files/img/13.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(4);" style="background:url('./files/img/14.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(5);" style="background:url('./files/img/15.png') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/16.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/17.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/18.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/19.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/20.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(1);" style="background:url('./files/img/21.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(2);" style="background:url('./files/img/22.jpg') center/cover no-repeat;"></div>
+    </div>
   </section>
 
   <!-- 위치 -->
   <section id="loc" class="fade-section">
-	  <div class="wrapper">
 	    <h3>오시는 길</h3>
 	
 	    <div id="map"></div>
@@ -144,7 +141,6 @@ window.addEventListener('load', () => {
 	        <a href="http://localhost:8080/#" class="nav-btn">티맵</a>
 	      </div>
 	    </div>
-    </div>
   </section>
 
 
@@ -241,5 +237,5 @@ function closeGallery(){
 }
 
 </script>
-
+</div>
 </body></html>
