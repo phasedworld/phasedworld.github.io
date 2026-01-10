@@ -289,13 +289,41 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px; /* 간격 좁히기 */
+  
+  transition: all 0.5s;
 }
+
 .pic-grid div {
-  width: 100%; aspect-ratio: 1 / 1.2; /* 세로가 긴 비율 */
+  width: 100%; aspect-ratio: 1 / 1; /* 세로가 긴 비율 */
   background-color: #eee;
   border-radius: 4px; /* 살짝 둥글게 */
   background-position: center; background-size: cover;
 }
+
+/* 더보기 */
+.pic-grid:not(.open){
+  max-height: calc(((100vw - 8px) *3 / 2) + 16px);
+  overflow: hidden;
+  
+}
+
+.pic-grid.open{
+	max-height: 5000px;
+}
+
+.pic-grid ~ .pic-more{
+  display:none;
+}
+
+.pic-grid:not(.open) ~ .pic-more{
+  display:block;
+  width:100%;
+  text-align:center;
+  font-size:17px;
+  padding:10px 20px;
+}
+
+/* 더보기 end*/
 
 /* ------------------------------------------------
    LOCATION & MAP
