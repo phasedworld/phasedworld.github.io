@@ -206,10 +206,11 @@ function openGallery(imgno){
     }
   });
 
-  const swiper = new Swiper('.swiper', {
+  var swiper = new Swiper('.swiper', {
 	  // Optional parameters
 	  direction: 'horizontal',
 	  loop: true,
+	  initialSlide: (imgno-1),
 
 	  // If we need pagination
 	  pagination: {
