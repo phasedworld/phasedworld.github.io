@@ -88,13 +88,27 @@ section {
   text-align: center;
 }
 
+#dim-layer{
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0);
+	z-index: 998;
+	display: none;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.25s ease;
+}
+
+#dim-layer.show {
+  display: block;
+  opacity: 0.6;
+}
+
 #gallery-pop {
   position: fixed;
   inset: 0;
   display: none;
-  background: rgba(0,0,0,0.7);
-  z-index: 9999;
-  overflow: hidden;
+  z-index: 999;
 }
 
 #gallery-pop.show {
@@ -126,23 +140,21 @@ section {
 
 /* 실제 이미지 프레임 */
 #gallery-pop .slide-inner {
-  width: calc(100vw - 10px);   /* 좌우 여백 */
-  height: calc(100dvh - 60px); /* 상하 여백 */
+  width: calc(100vw - 20px);
+  height: calc(100vh - 40px);
 
-  min-height: 50%;
   max-width: 100%;
-  max-height: 80%;
+  max-height: 75%;
 
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
   border-radius: 6px;
-  
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
 }
 
 /* ------------------------------------------------

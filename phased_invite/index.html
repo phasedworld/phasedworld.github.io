@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html><head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>PHASED WORLD</title>
 <link rel="stylesheet" href="./files/css/reset.css">
 <link rel="stylesheet" href="./files/css/style.css">
@@ -18,6 +18,88 @@
 window.addEventListener('load', () => {
 	$("#main").css("height",window.innerHeight);
 });
+
+//글자 스르륵
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-section').forEach(sec => observer.observe(sec));
+
+function copyAddress() {
+	const text = "서울 영등포구 문래로 164 SK리더스뷰 4층 JK아트컨벤션";
+	navigator.clipboard.writeText(text).then(() => alert('주소가 복사되었습니다.'));
+}
+
+//갤러리 팝업
+var swiper = null;
+function openGallery(imgno){
+  if($("#gallery-pop .swiper-wrapper .swiper-slide").length == 0){
+	  var galleryhtml = `
+		  <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/1.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/2.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/3.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/4.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/5.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/6.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/7.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/8.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/9.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/10.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/11.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/12.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/13.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/14.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/15.png')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/16.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/17.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/18.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/19.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/20.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/21.jpg')"></div></div>
+	      <div class="swiper-slide"><div class="slide-inner" style="background-image:url('./files/img/22.jpg')"></div></div>
+	  `;
+	  $("#gallery-pop .swiper-wrapper").html(galleryhtml);
+  }
+  
+  swiper = new Swiper('.swiper', {
+	  // Optional parameters
+	  direction: 'horizontal',
+	  loop: true,
+	  observer: true,
+	  observeParents: true,
+	  initialSlide: (imgno-1),
+
+	  // If we need pagination
+	  pagination: {
+	    el: '.swiper-pagination',
+	    type: 'bullets',
+	  },
+
+	  // Navigation arrows
+	  navigation: {
+	    nextEl: '.swiper-button-next',
+	    prevEl: '.swiper-button-prev',
+	  },
+	  
+	  // And if we need scrollbar
+	  scrollbar: {
+	    el: '.swiper-scrollbar',
+	  },
+});
+  
+  $("#dim-layer").addClass("show");
+	$("#gallery-pop").addClass("show");
+}
+
+function closeGallery(){
+	$("#dim-layer").removeClass("show");
+	$("#gallery-pop").removeClass("show");
+}
 </script>
 <section id="main" class="text-center" style="height: 919px;">
 	<div class="main-wrapper">
@@ -125,7 +207,7 @@ window.addEventListener('load', () => {
   <section id="loc" class="fade-section">
 	    <h3>오시는 길</h3>
 	
-	    <div id="map"></div>
+  	    <div id="map"></div>
 	
 	    <div class="addr-box">
 	      <div class="addr-text">
@@ -144,31 +226,11 @@ window.addEventListener('load', () => {
   </section>
 
 
+</div>
+<div id="dim-layer"></div>
 <div id="gallery-pop" onclick="closeGallery();">
 	<div class="swiper"style="position:absolute;"><!--  style="width:100%; height:100%;" -->
-		<div class="swiper-wrapper"><!--  -->
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/1.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/2.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/3.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/4.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/5.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/6.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/7.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/8.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/9.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/10.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/11.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/12.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/13.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/14.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/15.png"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/16.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/17.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/18.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/19.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/20.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/21.jpg"></div></div>
-		      <div class="swiper-slide"><div class="slide-inner" onclick="event.stopPropagation()" data-bg="./files/img/22.jpg"></div></div>
+		<div class="swiper-wrapper">
 		</div>
 		
 		 <!-- If we need pagination -->
@@ -178,65 +240,5 @@ window.addEventListener('load', () => {
 	  <div class="swiper-button-prev"></div>
 	  <div class="swiper-button-next"></div>
 	</div>
-</div>
-<script>
-
-//글자 스르륵
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('visible');
-}
-});
-}, { threshold: 0.15 });
-
-document.querySelectorAll('.fade-section').forEach(sec => observer.observe(sec));
-
-function copyAddress() {
-	const text = "서울 영등포구 문래로 164 SK리더스뷰 4층 JK아트컨벤션";
-	navigator.clipboard.writeText(text).then(() => alert('주소가 복사되었습니다.'));
-}
-
-//갤러리 팝업
-function openGallery(imgno){
-  document.querySelectorAll('#gallery-pop .slide-inner').forEach(slide => {
-    if (!slide.style.backgroundImage) {
-      var src = slide.dataset.bg;
-      slide.style.backgroundImage = `url('${src}')`;
-    }
-  });
-
-  var swiper = new Swiper('.swiper', {
-	  // Optional parameters
-	  direction: 'horizontal',
-	  loop: true,
-	  initialSlide: (imgno-1),
-
-	  // If we need pagination
-	  pagination: {
-	    el: '.swiper-pagination',
-	    type: 'bullets',
-	  },
-
-	  // Navigation arrows
-	  navigation: {
-	    nextEl: '.swiper-button-next',
-	    prevEl: '.swiper-button-prev',
-	  },
-	  
-	  // And if we need scrollbar
-	  scrollbar: {
-	    el: '.swiper-scrollbar',
-	  },
-});
-  
-  document.getElementById('gallery-pop').classList.add('show');
-}
-
-function closeGallery(){
-	$("#gallery-pop").removeClass("show");
-}
-
-</script>
 </div>
 </body></html>
