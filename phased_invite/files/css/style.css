@@ -290,7 +290,9 @@ section {
   grid-template-columns: repeat(2, 1fr);
   gap: 8px; /* 간격 좁히기 */
   
-  transition: all 0.5s;
+  transition: all 0.8s;
+  max-height: calc(((100vw - 8px) * 3 / 2) + 16px);
+  overflow: hidden;
 }
 
 .pic-grid div {
@@ -301,12 +303,6 @@ section {
 }
 
 /* 더보기 */
-.pic-grid:not(.open){
-  max-height: calc(((100vw - 8px) *3 / 2) + 16px);
-  overflow: hidden;
-  
-}
-
 .pic-grid.open{
 	max-height: 5000px;
 }
