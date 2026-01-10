@@ -5,47 +5,47 @@
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 100;
-	src: local('SUIT Thin'), url('./files/font/SUIT-Thin.woff2') format('woff2');
+	src: local('SUIT Thin'), url('../files/font/SUIT-Thin.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 200;
-	src: local('SUIT ExtraLight'), url('./files/font/SUIT-ExtraLight.woff2') format('woff2');
+	src: local('SUIT ExtraLight'), url('../files/font/SUIT-ExtraLight.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 300;
-	src: local('SUIT Light'), url('./files/font/SUIT-Light.woff2') format('woff2');
+	src: local('SUIT Light'), url('../files/font/SUIT-Light.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 400;
-	src: local('SUIT Regular'), url('./files/font/SUIT-Regular.woff2') format('woff2');
+	src: local('SUIT Regular'), url('../files/font/SUIT-Regular.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 500;
-	src: local('SUIT Medium'), url('./files/font/SUIT-Medium.woff2') format('woff2');
+	src: local('SUIT Medium'), url('../files/font/SUIT-Medium.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 600;
-	src: local('SUIT SemiBold'), url('./files/font/SUIT-SemiBold.woff2') format('woff2');
+	src: local('SUIT SemiBold'), url('../files/font/SUIT-SemiBold.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 700;
-	src: local('SUIT Bold'), url('./files/font/SUIT-Bold.woff2') format('woff2');
+	src: local('SUIT Bold'), url('../files/font/SUIT-Bold.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 800;
-	src: local('SUIT ExtraBold'), url('./files/font/SUIT-ExtraBold.woff2') format('woff2');
+	src: local('SUIT ExtraBold'), url('../files/font/SUIT-ExtraBold.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 900;
-	src: local('SUIT Heavy'), url('./files/font/SUIT-Heavy.woff2') format('woff2');
+	src: local('SUIT Heavy'), url('../files/font/SUIT-Heavy.woff2') format('woff2');
 }
 
 html { font-size: 16px; }
@@ -94,7 +94,7 @@ section {
 	background: rgba(255,255,255);
 	z-index: 998;
 	visibility: hidden;
-	pointer-events: none;
+	/* pointer-events: none; */
 	opacity: 0;
 	transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
@@ -115,6 +115,11 @@ section {
 
 #gallery-pop.show {
   display: block;
+}
+
+.close-pop{
+	position:absolute;
+	right:20px; top:10px;
 }
 
 /* Swiper 컨테이너 */
