@@ -91,7 +91,7 @@ section {
 #dim-layer{
 	position: fixed;
 	inset: 0;
-	background: rgba(255,255,255);
+	background: rgb(0,0,0);
 	z-index: 998;
 	visibility: hidden;
 	/* pointer-events: none; */
@@ -102,7 +102,7 @@ section {
 #dim-layer.show {
   visibility: visible;
   pointer-events: auto;
-  opacity: 0.6;
+  opacity: 0.2;
   transition: opacity 0.25s ease, visibility 0s;
 }
 
@@ -120,6 +120,9 @@ section {
 .close-pop{
 	position:absolute;
 	right:20px; top:10px;
+	z-index:2;
+	color:#fff;
+	cursor:pointer;
 }
 
 /* Swiper 컨테이너 */
@@ -128,6 +131,7 @@ section {
   height: 100%;
   overflow: hidden;
   touch-action: pan-y;
+  backdrop-filter: blur(1px);
 }
 
 /* Swiper 구조 핵심 */
@@ -147,7 +151,7 @@ section {
 
 /* 실제 이미지 프레임 */
 #gallery-pop .slide-inner {
-  width: calc(100vw - 20px);
+  width: 100vw;
   height: calc(100vh - 40px);
 
   max-width: 100%;
