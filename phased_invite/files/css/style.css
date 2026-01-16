@@ -302,7 +302,7 @@ section {
   gap: 8px; /* 간격 좁히기 */
   
   transition: all 0.8s;
-  height: min(
+  max-height: min(
     calc(((100vw - 8px) * 3 / 2) + 16px),
     500px
   );
