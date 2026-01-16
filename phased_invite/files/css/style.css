@@ -155,7 +155,7 @@ section {
   height: calc(100vh - 40px);
 
   max-width: 100%;
-  max-height: 75%;
+  max-height: 83%;
 
   background-position: center;
   background-repeat: no-repeat;
@@ -302,7 +302,10 @@ section {
   gap: 8px; /* 간격 좁히기 */
   
   transition: all 0.8s;
-  max-height: calc(((100vw - 8px) * 3 / 2) + 16px);
+  height: min(
+    calc(((100vw - 8px) * 3 / 2) + 16px),
+    500px
+  );
   overflow: hidden;
 }
 
