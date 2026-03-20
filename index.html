@@ -73,7 +73,7 @@ window.addEventListener('load', () => {
    	  if (files.length === 0) return;
 
    	  // 용량 제한 체크 (파일당 20MB)
-   	  const maxSize = 20 * 1024 * 1024;
+   	  const maxSize = 50 * 1024 * 1024;
    	  if (files.some(f => f.size > maxSize)) {
    	    alert("고화질 영상은 50MB 이하로만 가능합니다.");
    	    return;
