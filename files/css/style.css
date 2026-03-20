@@ -178,8 +178,10 @@ section {
    MAIN (HERO)
 ------------------------------------------------ */
 #main {
-  max-height: 100vh;
   padding: 0;
+  position:relative;
+  max-height: 100vh;
+  aspect-ratio: 2 / 3;
 }
 
 .main-wrapper{
@@ -193,41 +195,38 @@ section {
 	url('../../files/img/test02.jpg') center/cover no-repeat;
 }
 
-.main-wrapper.type1{
-	background:
-	linear-gradient(rgba(0,0,0,0.0) 70%, rgba(255,255,255,0.1), rgba(255,255,255,0.4)),
-	url('../../files/img/test02.jpg') center/cover no-repeat;
+.main-divider{
+	font-size: 18px;
+	color:#fff;
+	text-shadow: 2px 2px 5px #333;
 }
-.main-wrapper.type2{
-	background:
-	linear-gradient(rgba(0,0,0,0.0) 70%, rgba(255,255,255,0.1), rgba(255,255,255,0.4)),
-	url('../../files/img/8.jpg') center/cover no-repeat;
-}
-.main-wrapper.type3{
-	background:
-	linear-gradient(rgba(0,0,0,0.0) 70%, rgba(255,255,255,0.1), rgba(255,255,255,0.4)),
-	url('../../files/img/13.jpg') center/cover no-repeat;
-}
-.main-wrapper.type4{
-	background:
-	linear-gradient(rgba(0,0,0,0.0) 70%, rgba(255,255,255,0.1), rgba(255,255,255,0.4)),
-	url('../../files/img/22.jpg') center/cover no-repeat;
+
+.main-info-top{
+	height:10%;
+	margin-top:5%;
 }
 
 .main-divider.fill-height{
 	flex:1;
 }
-
-.main-info-wrapper{
-	color:#fff;
-	/* padding:64px 32px; */
-	padding:40px;
-	font-size: 18px;
+.main-divider.fill-height .name{
+	position:absolute;
+	right:10%; bottom:10%;
 }
 
-.main-info {
+.main-info-bot{
+	fontt-size:14px;
+	margin-bottom:5%;
+}
+
+.main-row {
 	display:flex;
-	justify-content:space-between;
+	flex-direction:row;
+}
+
+.main-column {
+	display:flex;
+	flex-direction:column;
 }
 
 

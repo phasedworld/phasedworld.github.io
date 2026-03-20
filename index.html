@@ -17,15 +17,14 @@
 <div class="wrapper">
 <script>
 window.addEventListener('load', () => {
-	//$("#main").css("height",window.innerWidth()*1.4);
+	//$("#main").css("height",$("body > .wrapper").width()*1.5);
 	
 	//글자 스르륵
 	var observer = new IntersectionObserver(entries => {
 	entries.forEach(entry => {
-		console.log(entry);
-	if (entry.isIntersecting) {
-	entry.target.classList.add('visible');
-	}
+		if (entry.isIntersecting) {
+		entry.target.classList.add('visible');
+		}
 	});
 	}, { threshold: 0.15 });
 
@@ -39,18 +38,25 @@ window.addEventListener('load', () => {
         logoControl: false,
         mapDataControl: false,
         zoomControl: true,
-        minZoom: 10
+        minZoom: 10,
+        draggable: false,      // 처음엔 드래그 금지
+        scrollWheel: false     // 마우스 휠로 확대 금지
     };
+    
     var map = new naver.maps.Map('map', mapOptions);
     var marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(weddingLocation),
         map: map
     });
-
- 	// Import the functions you need from the SDKs you need
     
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ 	// 지도를 클릭하면 조작이 가능해지도록 변경
+    naver.maps.Event.addListener(map, 'click', function() {
+        map.setOptions({
+            draggable: true,
+            scrollWheel: true
+        });
+    });
+
     const firebaseConfig = {
 	  apiKey: "AIzaSyDLwjHkQhFzYLyBbEriDvB6CzkUenDsK88",
 	  authDomain: "jieunsung-8c314.firebaseapp.com",
@@ -60,11 +66,7 @@ window.addEventListener('load', () => {
 	  appId: "1:731494333278:web:d4753f55d3a0bf80106dcf",
 	  measurementId: "G-EZDY2S2DHX"
 	};
-
-    // Initialize Firebase
-    //const app = initializeApp(firebaseConfig);
-    //const analytics = getAnalytics(app);
-
+    
     firebase.initializeApp(firebaseConfig);
     const storage = firebase.storage();
     const realInput = document.getElementById('hidden-file-input');
@@ -72,7 +74,7 @@ window.addEventListener('load', () => {
    	  const files = Array.from(e.target.files);
    	  if (files.length === 0) return;
 
-   	  // 용량 제한 체크 (파일당 20MB)
+   	  // 용량 제한 체크 (파일당 50MB)
    	  const maxSize = 50 * 1024 * 1024;
    	  if (files.some(f => f.size > maxSize)) {
    	    alert("고화질 영상은 50MB 이하로만 가능합니다.");
@@ -205,22 +207,26 @@ function triggerUpload() {
 
 
 </script>
-<section id="main" class="text-center" style="max-height:90%; height: 600px;">
+<section id="main" class="text-center" style="max-height:90%;">
 	<div class="main-wrapper">
-		<div class="main-divider main-info-wrapper">
-			<div class="main-info">
+		<div class="main-divider main-info-top">
+			<div class=" main-column">
 				<div>2026. 05. 16 SAT</div>
 				<div>11:00</div>
 			</div>
 		</div>
-		<div class="main-divider fill-height"></div>
-		<div class="main-divider main-info-wrapper">
-			<div class="main-info">
-				<div>정진성·박지은</div>
-				<div>문래 JK아트컨벤션<br/>아트리움홀</div>
+		<div class="main-divider fill-height">
+			<div class="main-column" style="position:relative; height:100%;">
+				<div class="name">정진성·박지은</div>
+			</div>
+		</div>
+		<div class="main-divider main-info-bot">
+			<div class="main-column">
+				<div>문래 JK아트컨벤션 / 아트리움홀</div>
 			</div>
 		</div>
 	</div>
+	<div id="lettering" style="position:absolute; top:0; left:0;width:100%;height:100%; background:url('./files/img/lettering.png') center/cover no-repeat;"></div>
 </section>
 
   <section id="intro" class="fade-section">
