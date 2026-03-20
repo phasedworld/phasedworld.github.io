@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>PHASED WORLD</title>
+<link rel="stylesheet" href="./files/css/reset.css">
+<link rel="stylesheet" href="./files/css/style.css">
+<link rel="stylesheet" href="./files/css/Swiper.css" />
+<script src="./files/js/jquery-3.7.1.min.js"></script>
+<script src="./files/js/jquery-ui.min.js"></script>
+<script src="./files/js/Swiper.js"></script>
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rg2l0ogdg0"></script>
+<script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-storage-compat.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+<script>
+window.addEventListener('load', () => {
+	//$("#main").css("height",window.innerWidth()*1.4);
+	
+	//글자 스르륵
+	var observer = new IntersectionObserver(entries => {
+	entries.forEach(entry => {
+		console.log(entry);
+	if (entry.isIntersecting) {
+	entry.target.classList.add('visible');
+	}
+	});
+	}, { threshold: 0.15 });
+
+	document.querySelectorAll('.fade-section').forEach(sec => observer.observe(sec));
+	
+	//네이버지도
+    var weddingLocation = new naver.maps.LatLng(37.5177695, 126.9000792); 
+    var mapOptions = {
+        center: weddingLocation,
+        zoom: 16,
+        logoControl: false,
+        mapDataControl: false,
+        zoomControl: true,
+        minZoom: 10
+    };
+    var map = new naver.maps.Map('map', mapOptions);
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(weddingLocation),
+        map: map
+    });
+
+ 	// Import the functions you need from the SDKs you need
+    
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+	  apiKey: "AIzaSyDLwjHkQhFzYLyBbEriDvB6CzkUenDsK88",
+	  authDomain: "jieunsung-8c314.firebaseapp.com",
+	  projectId: "jieunsung-8c314",
+	  storageBucket: "jieunsung-8c314.firebasestorage.app",
+	  messagingSenderId: "731494333278",
+	  appId: "1:731494333278:web:d4753f55d3a0bf80106dcf",
+	  measurementId: "G-EZDY2S2DHX"
+	};
+
+    // Initialize Firebase
+    //const app = initializeApp(firebaseConfig);
+    //const analytics = getAnalytics(app);
+
+    firebase.initializeApp(firebaseConfig);
+    const storage = firebase.storage();
+    const realInput = document.getElementById('hidden-file-input');
+    realInput.addEventListener('change', async (e) => {
+   	  const files = Array.from(e.target.files);
+   	  if (files.length === 0) return;
+
+   	  // 용량 제한 체크 (파일당 20MB)
+   	  const maxSize = 20 * 1024 * 1024;
+   	  if (files.some(f => f.size > maxSize)) {
+   	    alert("고화질 영상은 50MB 이하로만 가능합니다.");
+   	    return;
+   	  }
+
+   	  // 버튼 상태 변경
+   	  $("#uploadBtn").prop("disabled",true);
+	  $("#uploadBtn").text("전송 중...");
+	  $("#statusText").show();
+	  $("#statusText").text(`총 ${files.length}개의 추억을 전달하고 있습니다...`);
+
+   	  const promises = files.map(file => {
+   	    const fileName = Date.now() + "_" + file.name;
+   	    const storageRef = storage.ref().child('wedding_memories/' + fileName);
+   	    return storageRef.put(file);
+   	  });
+
+   	  try {
+   	    await Promise.all(promises);
+   	    alert("소중한 사진 감사합니다! 예쁘게 간직할게요. ❤️");
+   	 	$("#uploadBtn").text("업로드 완료!");
+   	 	$("#statusText").text("성공적으로 전달되었습니다.");
+   	  } catch (err) {
+   	    console.error(err);
+   	    alert("업로드 중 오류가 발생했습니다. 다시 시도해주세요.");
+   	 	$("#uploadBtn").prop("disabled",false);
+   	 	$("#uploadBtn").text("다시 시도하기");
+   	  } finally {
+   	    realInput.value = ""; // 선택 리셋
+   	  }
+   	});
+});
+
+function copyAddress() {
+	const text = "서울 영등포구 문래로 164 SK리더스뷰 4층 JK아트컨벤션";
+	navigator.clipboard.writeText(text).then(() => alert('주소가 복사되었습니다.'));
+}
+
+//갤러리 팝업
+var swiper = null;
+function openGallery(imgno){
+  if($("#gallery-pop .swiper-wrapper .swiper-slide").length == 0){
+	  var galleryhtml = `
+		  <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/1.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/2.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/3.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/4.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/wedding_01.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/wedding_02.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/6.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/8.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/9.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/10.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/11.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/12.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/13.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/14.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/wedding_03.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/16.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/wedding_04.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/18.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/19.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/20.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/21.jpg"/></div></div>
+	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/22.jpg"/></div></div>
+	  `;
+	  $("#gallery-pop .swiper-wrapper").html(galleryhtml);
+  }
+  
+  swiper = new Swiper('.swiper', {
+	  // Optional parameters
+	  direction: 'horizontal',
+	  loop: true,
+	  observer: true,
+	  observeParents: true,
+	  initialSlide: (imgno-1),
+	  zoom: {
+		    maxRatio: 3,
+		    minRatio: 1,
+		    toggle: true
+	  },
+	  // If we need pagination
+	  pagination: {
+	    el: '.swiper-pagination',
+	    type: 'bullets',
+	  },
+
+	  // Navigation arrows
+	  navigation: {
+	    nextEl: '.swiper-button-next',
+	    prevEl: '.swiper-button-prev',
+	  },
+	  
+	  // And if we need scrollbar
+	  scrollbar: {
+	    el: '.swiper-scrollbar',
+	  },
+	  
+	// [추가] 줌 도중 슬라이드 방지 및 터치 감도 최적화
+	    touchStartPreventDefault: false,
+	    passiveListeners: false, // 터치 이벤트 가로채기 활성화
+	    touchMoveStopPropagation: true,
+});
+  
+//1. 갤러리 팝업 안에서만 핀치 줌 방지
+  const galleryPop = document.getElementById('gallery-pop');
+
+  galleryPop.addEventListener('touchmove', function (event) {
+      // 손가락이 2개 이상이고, 스케일 변화가 있을 때만 방어
+      if (event.touches.length > 1) {
+          event.preventDefault();
+      }
+  }, { passive: false });
+  
+  $("#dim-layer").addClass("show");
+	$("#gallery-pop").addClass("show");
+}
+
+function closeGallery(){
+	$("#dim-layer").removeClass("show");
+	$("#gallery-pop").removeClass("show");
+}
+
+function triggerUpload() {
+  $("#hidden-file-input").click();
+}
+
+// 2. 파일이 선택되면 즉시 업로드 시작
+
+
+</script>
+<section id="main" class="text-center" style="max-height:90%; height: 600px;">
+	<div class="main-wrapper">
+		<div class="main-divider main-info-wrapper">
+			<div class="main-info">
+				<div>2026. 05. 16 SAT</div>
+				<div>11:00</div>
+			</div>
+		</div>
+		<div class="main-divider fill-height"></div>
+		<div class="main-divider main-info-wrapper">
+			<div class="main-info">
+				<div>정진성·박지은</div>
+				<div>문래 JK아트컨벤션<br/>아트리움홀</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+  <section id="intro" class="fade-section">
+    <h3>초대합니다.</h3>
+    <div class="invitation-msg">
+      결혼식을 올리게 되었습니다.<br>
+      저희의 새로운 시작을<br>
+      따뜻한 마음으로 축복해 주시면 감사하겠습니다.
+    </div>
+    
+    <div class="invitation-msg">
+    	<div>정병식·이미옥<span class="small">의 장남 </span>정진성</div>
+    	<div>박준열·최미성<span class="small">의 장녀 </span>박지은</div>
+    </div>
+    
+    
+  </section>
+
+  <!-- 예식 안내 -->
+  <section id="info" class="fade-section">
+    <h3>예식 안내</h3>
+
+    <div class="calendar-wrapper">
+      <table class="calendar" id="calendar">
+        <thead>
+          <tr>
+            <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>1</td><td>2</td>
+          </tr>
+          <tr>
+            <td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+          </tr>
+          <tr>
+            <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td class="d-day">16</td>
+          </tr>
+          <tr>
+            <td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+          </tr>
+          <tr>
+            <td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="calendar-info info-date">2026.05.16 토요일 오전 11시</div>
+    <div class="calendar-info info-place">문래 JK아트컨벤션 / 아트리움홀</div>
+    
+  </section>
+
+  <!-- 사진 -->
+  <section id="pic" class="fade-section visible">
+  	<h3>갤러리</h3>
+    <div class="pic-grid">
+      <div onclick="openGallery(1);" style="background:url('./files/img/1.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(2);" style="background:url('./files/img/2.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(3);" style="background:url('./files/img/3.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(4);" style="background:url('./files/img/4.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(5);" style="background:url('./files/img/wedding_01.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/wedding_02.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(7);" style="background:url('./files/img/6.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(8);" style="background:url('./files/img/8.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(9);" style="background:url('./files/img/9.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(10);" style="background:url('./files/img/10.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(11);" style="background:url('./files/img/11.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(12);" style="background:url('./files/img/12.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(13);" style="background:url('./files/img/13.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(14);" style="background:url('./files/img/14.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(15);" style="background:url('./files/img/wedding_03.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(16);" style="background:url('./files/img/16.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(17);" style="background:url('./files/img/wedding_04.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(18);" style="background:url('./files/img/18.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(19);" style="background:url('./files/img/19.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(20);" style="background:url('./files/img/20.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(21);" style="background:url('./files/img/21.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(22);" style="background:url('./files/img/22.jpg') center/cover no-repeat;"></div>
+    </div>
+    
+    <button class="pic-more" onclick="$('#pic .pic-grid').toggleClass('open');">open</button>
+  </section>
+
+  <!-- 위치 -->
+  <section id="loc" class="fade-section">
+	    <h3>오시는 길</h3>
+	
+  	    <div id="map"></div>
+	
+	    <div class="addr-box">
+	      <div class="addr-text">
+	        서울 영등포구 문래로 164<br>
+	        SK리더스뷰 4층 JK아트컨벤션
+	      </div>
+	
+	      <button class="btn-copy" onclick="copyAddress();">주소 복사</button>
+	
+	      <div class="nav-buttons">
+	        <a href="http://localhost:8080/#" class="nav-btn">카카오내비</a>
+	        <a href="https://naver.me/xuCppMXy" target="_blank" class="nav-btn">네이버지도</a>
+	        <a href="https://tmap.life/362fc459" target="_blank" class="nav-btn">티맵</a>
+	      </div>
+	    </div>
+  </section>
+  
+  <!-- Dev -->
+  <section id="loc" class="fade-section">
+  <h3>Dev</h3>
+  <input type="file" id="hidden-file-input" multiple accept="image/*, video/*" style="display:none;">
+	<button type="button" class="btn-copy" id="btn-upload-main" onclick="triggerUpload();">
+	    실시간 웨딩사진 업로드
+	</button>
+	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>
+  </section>
+
+
+</div>
+<div id="dim-layer"></div>
+<div id="gallery-pop">
+<div class="close-pop" onclick="closeGallery();">&times;</div>
+	<div class="swiper"  style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"><!--  style="width:100%; height:100%;" -->
+		<div class="swiper-wrapper">
+		</div>
+		
+		 <!-- If we need pagination -->
+	  <div class="swiper-pagination"></div>
+	
+	  <!-- If we need navigation buttons -->
+	  <div class="swiper-button-prev"></div>
+	  <div class="swiper-button-next"></div>
+	</div>
+</div>
+</body></html>
