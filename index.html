@@ -92,10 +92,10 @@ window.addEventListener('load', () => {
    	  }
 
    	  // 버튼 상태 변경
-   	  $("#uploadBtn").prop("disabled",true);
-	  $("#uploadBtn").text("전송 중...");
-	  $("#statusText").show();
-	  $("#statusText").text(`총 ${files.length}개의 추억을 전달하고 있습니다...`);
+   	  $("#upload-btn").prop("disabled",true);
+	  $("#upload-btn").text("전송 중...");
+	  $("#upload-status").show();
+	  $("#upload-status").text(`총 ${files.length}개의 추억을 전달하고 있습니다...`);
 
    	  const promises = files.map(file => {
    	    const fileName = Date.now() + "_" + file.name;
@@ -106,13 +106,13 @@ window.addEventListener('load', () => {
    	  try {
    	    await Promise.all(promises);
    	    alert("소중한 사진 감사합니다! 예쁘게 간직할게요. ❤️");
-   	 	$("#uploadBtn").text("업로드 완료!");
-   	 	$("#statusText").text("성공적으로 전달되었습니다.");
+   	 	$("#upload-btn").text("업로드 완료!");
+   	 	$("#upload-status").text("성공적으로 전달되었습니다.");
    	  } catch (err) {
    	    console.error(err);
    	    alert("업로드 중 오류가 발생했습니다. 다시 시도해주세요.");
-   	 	$("#uploadBtn").prop("disabled",false);
-   	 	$("#uploadBtn").text("다시 시도하기");
+   	 	$("#upload-btn").prop("disabled",false);
+   	 	$("#upload-btn").text("다시 시도하기");
    	  } finally {
    	    realInput.value = ""; // 선택 리셋
    	  }
@@ -120,7 +120,7 @@ window.addEventListener('load', () => {
 });
 
 function copyAddress() {
-	const text = "서울 영등포구 문래로 164 SK리더스뷰 4층 JK아트컨벤션";
+	const text = "서울 영등포구 문래로 164 SK리더스뷰 JK아트컨벤션";
 	navigator.clipboard.writeText(text).then(() => alert('주소가 복사되었습니다.'));
 }
 
@@ -199,9 +199,9 @@ function triggerUpload() {
 
 function goKakaoNavi() {
 	Kakao.Navi.share({
-	      name: '현대백화점 판교점',
-	      x: 127.11205203011632,
-	      y: 37.39279717586919,
+	      name: 'JK아트컨벤션',
+	      x: 126.9000792,
+	      y: 37.5177695,
 	      coordType: 'wgs84',
 	    });
 }
@@ -294,36 +294,17 @@ function applyTheme(themeName) {
     </div>
     <div class="calendar-info info-date">2026.05.16 토요일 오전 11시</div>
     <div class="calendar-info info-place">문래 JK아트컨벤션 / 아트리움홀</div>
-    
-  </section>
-
-  <!-- 사진 -->
-  <section id="pic" class="fade-section visible">
-  	<h3>갤러리</h3>
-    <div class="pic-grid">
-      <div onclick="openGallery(1);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(2);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(3);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(4);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(5);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(6);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
-    </div>
-    
-    <button class="pic-more" onclick="$('#pic .pic-grid').toggleClass('open');">open</button>
   </section>
 
   <!-- 위치 -->
   <section id="loc" class="fade-section">
 	    <h3>오시는 길</h3>
-	
   	    <div id="map"></div>
-	
 	    <div class="addr-box">
 	      <div class="addr-text">
-	        서울 영등포구 문래로 164 SK리더스뷰 4층 JK아트컨벤션
+	        서울특별시 영등포구 문래로 164 (문래동3가 55-16) SK리더스뷰 4층 JK아트컨벤션
 	        <button class="btn-copy" onclick="copyAddress();">복사</button>
 	      </div>
-	
 	      <div class="nav-buttons">
 	        <a href="#" onclick="goKakaoNavi(); return false;" class="nav-btn">카카오내비</a>
 	        <span class="btn-split"></span>
@@ -332,13 +313,33 @@ function applyTheme(themeName) {
 	        <a href="https://tmap.life/362fc459" target="_blank" class="nav-btn">티맵</a>
 	      </div>
 	    </div>
+	    <div class="loc-info">
+		    <p class="loc-info-title">대중교통</p>
+		    <p>문래역 5번출구에서 전방 직진 300m</p>
+		    <p class="loc-info-title">자차</p>
+		    <p>네비게이션 'JK아트컨벤션'입력→[웨딩홀 주차장] 입간판에서 우회전→<b>룩스상가 상가주차장</b>으로 진입</p>
+	    </div>
+  </section>
+  
+  <!-- 사진 -->
+  <section id="pic" class="fade-section visible">
+  	<h3>갤러리</h3>
+    <div class="pic-grid">
+      <div onclick="openGallery(1);" style="background:url('./files/img/mainpic1.jpg') center/upload-btno-repeat;"></div>
+      <div onclick="openGallery(2);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(3);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(4);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(5);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(6);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
+    </div>
+    <button class="pic-more" onclick="$('#pic .pic-grid').toggleClass('open');">open</button>
   </section>
   
   <!-- 하객스냅 -->
   <section id="snap" class="fade-section">
   <h3>하객스냅</h3>
   <input type="file" id="hidden-file-input" multiple accept="image/*, video/*" style="display:none;">
-	<button type="button" class="btn-round" id="btn-upload-main" onclick="triggerUpload();">
+	<button type="button" class="btn-round" id="upload-btn" onclick="triggerUpload();">
 	    실시간 웨딩사진 업로드
 	</button>
 	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>

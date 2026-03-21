@@ -373,11 +373,20 @@ section {
 
 /* 더보기 end*/
 
+.btn-round {
+  display: inline-block;
+  background: #f7f7f7; color: #333;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem; cursor: pointer;
+}
+
 /* ------------------------------------------------
    LOCATION & MAP
 ------------------------------------------------ */
 #map {
-  width: 100%; height: 350px;
+  width: 100%; height: 250px;
   background: #f0f0f0;
   border-radius: 8px; /* 지도 모서리 둥글게 */
   margin-bottom: 30px;
@@ -404,15 +413,6 @@ section {
 	border-radius:5px;
 }
 
-.btn-round {
-  display: inline-block;
-  background: #f7f7f7; color: #333;
-  border: 1px solid #ddd;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 0.9rem; cursor: pointer;
-}
-
 .nav-buttons {
   margin-top: 10px;
   display: flex; gap: 4px;
@@ -436,7 +436,18 @@ section {
   font-size:0.85rem;
   text-align: center;
 }
-.nav-btn:hover { opacity: 0.9; }
+
+.loc-info{
+	margin-top: 10px;
+	text-align:left;
+	font-size:0.9rem;
+}
+
+.loc-info .loc-info-title{
+	font-size:1rem;
+	font-weight:bold;
+	font-style:italic;
+}
 
 /* ------------------------------------------------
    ANIMATION
