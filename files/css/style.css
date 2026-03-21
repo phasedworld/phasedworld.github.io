@@ -389,14 +389,19 @@ section {
 
 .btn-copy:before{
 	content: "";
-	background: url('../../files/img/icon_copy.png') contain no-repeat;
+	background-image: url('../../files/img/icon_copy.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
 	display: inline-block;
     width: 20px;
     height: 20px;
     vertical-align:middle;
 }
 .btn-copy{
-	
+	background:#f7f7f7;
+	border-radius:5px;
 }
 
 .btn-round {
@@ -445,15 +450,15 @@ section {
 ------------------------------------------------ */
 
 /* 기본테마 */
-:root { --main-color:#fcfcfc; --font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg'); }
-body.theme-dark { --main-color: #333; --font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
-body.theme-forest { --main-color: #2e8b57; --font-color:#f27042; --bg-img: url('../../files/img/mainpic1.jpg'); }
-body.theme-pink { --main-color: #fcfcfc; --font-color:#f385a0; --bg-img: url('../../files/img/whitepic.jpg'); }
+:root { --main-color:#ffea70; --font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg'); }
+body.theme-dark { --main-color: #1b75bb; --font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
+body.theme-forest { --main-color: #f27042; --font-color:#f27042; --bg-img: url('../../files/img/mainpic1.jpg'); }
+body.theme-pink { --main-color: #f385a0; --font-color:#f385a0; --bg-img: url('../../files/img/whitepic.jpg'); }
 
-.default { background: #fcfcfc; }
-.dark { background: #333; }
-.forest { background: #2e8b57; }
-.pink { background: #f385a0; }
+.color-dot.default { background: #fcfcfc; }
+.color-dot.dark { background: #333; }
+.color-dot.forest { background: #2e8b57; }
+.color-dot.pink { background: #f385a0; }
 
 #main{ color:var(--font-color);}
 .theme-dark #main { text-shadow:none; }
@@ -468,8 +473,9 @@ body.theme-pink { --main-color: #fcfcfc; --font-color:#f385a0; --bg-img: url('..
 .theme-selector {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     margin-top: 20px;
+    overflow-x: scroll;
 }
 
 .theme-card {

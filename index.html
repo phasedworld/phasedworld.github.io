@@ -23,6 +23,8 @@ window.addEventListener('load', () => {
 	var savedTheme = localStorage.getItem('user-theme');
     if (savedTheme) {
         document.body.className = "theme-"+savedTheme;
+        $(".theme-card").removeClass('active');
+        $(".theme-card."+savedTheme).addClass('active');
     }
 	
 	//글자 스르륵
@@ -332,19 +334,19 @@ function applyTheme(themeName) {
   <section id="snap" class="fade-section">
   <h3>실험실🧪</h3>
   <div class="theme-selector">
-    <div class="theme-card active" onclick="applyTheme('default')">
+    <div class="theme-card default active" onclick="applyTheme('default')">
       <div class="color-dot default"></div>
       <span>Classic</span>
     </div>
-    <div class="theme-card" onclick="applyTheme('dark')">
+    <div class="theme-card dark" onclick="applyTheme('dark')">
       <div class="color-dot dark"></div>
       <span>Dark</span>
     </div>
-    <div class="theme-card" onclick="applyTheme('forest')">
+    <div class="theme-card forest" onclick="applyTheme('forest')">
       <div class="color-dot forest"></div>
       <span>Natural</span>
     </div>
-    <div class="theme-card" onclick="applyTheme('pink')">
+    <div class="theme-card pink" onclick="applyTheme('pink')">
       <div class="color-dot pink"></div>
       <span>Pink</span>
     </div>
