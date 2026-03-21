@@ -182,6 +182,8 @@ section {
   position:relative;
   max-height: 100vh;
   aspect-ratio: 2 / 3;
+  color:#fff;
+  text-shadow: 1px 1px 1px #333;
 }
 
 .main-visual{
@@ -195,8 +197,6 @@ section {
 
 .main-divider{
 	font-size: 16px;
-	color:#fff;
-	text-shadow: 2px 2px 3px #333;
 }
 
 .main-info-top{
@@ -225,6 +225,7 @@ section {
 .main-column {
 	display:flex;
 	flex-direction:column;
+	align-items:center;
 }
 
 
@@ -442,18 +443,27 @@ section {
 /* ------------------------------------------------
    실험실
 ------------------------------------------------ */
-/* 기본 테마 (화이트/핑크) */
-:root { --main-color:#fcfcfc; --bg-img: url('../../files/img/test02.jpg'); }
 
-/* 실험실 테마 A (다크/골드) */
-body.theme-dark { --main-color: #d4af37; --bg-img: url('../../files/img/darkpic.jpg'); }
-/* 실험실 테마 B (그린/내추럴) */
-body.theme-forest { --main-color: #2e8b57; --bg-img: url('../../files/img/mainpic1.jpg'); }
-body.theme-pink { --main-color: #2e8b57; --bg-img: url('../../files/img/whitepic.jpg'); }
+/* 기본테마 */
+:root { --main-color:#fcfcfc; --font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg'); }
+body.theme-dark { --main-color: #333; --font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
+body.theme-forest { --main-color: #2e8b57; --font-color:#f27042; --bg-img: url('../../files/img/mainpic1.jpg'); }
+body.theme-pink { --main-color: #fcfcfc; --font-color:#f385a0; --bg-img: url('../../files/img/whitepic.jpg'); }
+
+.default { background: #fcfcfc; }
+.dark { background: #333; }
+.forest { background: #2e8b57; }
+.pink { background: #f385a0; }
+
+#main{ color:var(--font-color);}
+.theme-dark #main { text-shadow:none; }
+.theme-forest #main { text-shadow:none; }
+.theme-pink #main { text-shadow:none; }
+
 
 /* 실제 적용은 변수로! */
 .main-visual { background-image: var(--bg-img);}
-.font-highlight { color: var(--main-color); }
+.font-highlight { color: var(--font-color); }
 
 .theme-selector {
     display: flex;
@@ -484,7 +494,25 @@ body.theme-pink { --main-color: #2e8b57; --bg-img: url('../../files/img/whitepic
     border-radius: 50%;
     margin-bottom: 8px;
 }
-.default { background: #fcfcfc; }
-.dark { background: #333; }
-.forest { background: #2e8b57; }
-.pink { background: #ffc0cb; }
+
+#lettering {
+	position:absolute; top:0; left:0;width:100%;height:100%;
+    background:url('../../files/img/lettering.png') center/cover no-repeat;
+    text-shadow: 1px 1px 1px #333;
+}
+body.theme-dark #lettering {
+	background:url('../../files/img/blackletter.png') center/cover no-repeat;
+	text-shadow:none;
+    filter: invert(36%) sepia(98%) saturate(757%) hue-rotate(175deg) brightness(87%) contrast(91%);
+	
+}
+body.theme-forest #lettering {
+	background:url('../../files/img/blackletter.png') center/cover no-repeat;
+	text-shadow:none;
+    filter: invert(53%) sepia(36%) saturate(1675%) hue-rotate(334deg) brightness(98%) contrast(93%);
+}
+body.theme-pink #lettering {
+	background:url('../../files/img/blackletter.png') center/cover no-repeat;
+	text-shadow:none;
+    filter: invert(58%) sepia(33%) saturate(628%) hue-rotate(296deg) brightness(103%) contrast(91%);
+}
