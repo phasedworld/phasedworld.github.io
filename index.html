@@ -11,7 +11,7 @@
 <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=rg2l0ogdg0"></script>
 <script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-storage-compat.js"></script>
-
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f070ce119133be025d17b4c5cb943a07"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -195,6 +195,20 @@ function triggerUpload() {
   $("#hidden-file-input").click();
 }
 
+function goKakaoNavi() {
+    if (typeof kakao !== 'undefined' && kakao.maps && kakao.maps.Transcoord) {
+        Kakao.Navi.start({
+            name: '우리 결혼식장 이름',
+            x: 126.9000792,
+            y: 37.5177695,
+            coordType: 'wgs84'
+        });
+    } else {
+        var name = encodeURIComponent("예식장 이름");
+        location.href = `kakaonavi://navigate?name=${name}&x=126.9000792&y=37.5177695&coordType=wgs84`;
+    }
+}
+
 function applyTheme(themeName) {
     document.body.className = 'theme-' + themeName;
     localStorage.setItem('user-theme', themeName);
@@ -314,8 +328,10 @@ function applyTheme(themeName) {
 	      </div>
 	
 	      <div class="nav-buttons">
-	        <a href="http://localhost:8080/#" class="nav-btn">카카오내비</a>
+	        <a href="#" onclick="goKakaoNavi(); return false;" class="nav-btn">카카오내비</a>
+	        <span class="btn-split"></span>
 	        <a href="https://naver.me/xuCppMXy" target="_blank" class="nav-btn">네이버지도</a>
+	        <span class="btn-split"></span>
 	        <a href="https://tmap.life/362fc459" target="_blank" class="nav-btn">티맵</a>
 	      </div>
 	    </div>

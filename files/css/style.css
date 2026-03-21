@@ -414,25 +414,27 @@ section {
 }
 
 .nav-buttons {
-  margin-top: 30px;
-  display: flex; gap: 8px;
-  flex-direction: column;
+  margin-top: 10px;
+  display: flex; gap: 4px;
+  flex-direction: row;
+  background:#f7f7f7;
+  border:1px solid #ddd;
+  border-radius:5px;
+  align-items:center;
+  padding:5px 0px;
 }
 
-@media (min-width: 320px) {
-  .nav-buttons { flex-direction: row; justify-content: center; }
+.nav-buttons .btn-split{
+	width:1px; height:20px;
+	background:#ddd;
 }
 
 .nav-btn {
   flex: 1;
-  padding: 14px 0;
-  background: #333;
-  color: #fff;
+  color: #333;
   text-decoration: none;
-  font-size: 0.95rem;
-  border-radius: 6px;
+  font-size:0.85rem;
   text-align: center;
-  transition: opacity 0.2s;
 }
 .nav-btn:hover { opacity: 0.9; }
 
