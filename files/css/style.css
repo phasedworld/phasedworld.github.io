@@ -485,6 +485,9 @@ h3 {color:var(--text-main);}
 .nav-buttons .btn-split{background:var(--text-sub);}
 .btn-copy{background:#ffffff55;}
 .btn-round{border:1px solid var(--text-sub); background:#ffffff55;}
+body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
+, body:not(.theme-pink) .d-day::after, body:not(.theme-butter) .d-day::after {background:var(--text-sub);};
+
 .theme-selector {
     display: flex;
     justify-content: center;
