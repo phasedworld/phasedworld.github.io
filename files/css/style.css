@@ -463,20 +463,25 @@ section {
 ------------------------------------------------ */
 
 /* 기본테마 */
-:root { --main-color:#ffea70; --font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg'); }
-body.theme-dark { --main-color: #1b75bb; --font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
-body.theme-forest { --main-color: #f27042; --font-color:#f27042; --bg-img: url('../../files/img/mainpic1.jpg'); }
-body.theme-pink { --main-color: #f385a0; --font-color:#f385a0; --bg-img: url('../../files/img/whitepic.jpg'); }
+:root { --main-color:#fff4b0; --font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg'); }
+body.theme-dark { --main-color: #fff9f0; --font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
+body.theme-forest { --main-color: #e2eebb; --font-color:#f27042; --bg-img: url('../../files/img/mainpic1.jpg'); }
+body.theme-pink { --main-color: #fff9f0; --font-color:#e68585; --bg-img: url('../../files/img/whitepic.jpg'); }
+body.theme-butter { --main-color: #ffea70; --font-color:#ffffff; --bg-img: url('../../files/img/whitepic.jpg'); }
 
 .color-dot.default { background: #fcfcfc; }
 .color-dot.dark { background: #333; }
-.color-dot.forest { background: #2e8b57; }
+.color-dot.forest { background: #E2EEBB; }
 .color-dot.pink { background: #f385a0; }
 
 #main{ color:var(--font-color);}
 .theme-dark #main { text-shadow:none; }
 .theme-forest #main { text-shadow:none; }
 .theme-pink #main { text-shadow:none; }
+
+section:nth-child(2n-1){
+	background: var(--main-color);
+}
 
 
 /* 실제 적용은 변수로! */
