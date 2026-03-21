@@ -279,7 +279,7 @@ section {
   position: absolute;
   top: 50%; left: 50%;
   width: 32px; height: 32px;
-  background: #333; /* 모던한 차콜색 */
+  background:var(--main-font-color);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
