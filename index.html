@@ -19,6 +19,12 @@
 window.addEventListener('load', () => {
 	//$("#main").css("height",$("body > .wrapper").width()*1.5);
 	
+	//저장 테마 확인
+	var savedTheme = localStorage.getItem('user-theme');
+    if (savedTheme) {
+        document.body.className = "theme-"+savedTheme;
+    }
+	
 	//글자 스르륵
 	var observer = new IntersectionObserver(entries => {
 	entries.forEach(entry => {
@@ -187,12 +193,25 @@ function triggerUpload() {
   $("#hidden-file-input").click();
 }
 
-// 2. 파일이 선택되면 즉시 업로드 시작
+function applyTheme(themeName) {
+    document.body.className = 'theme-' + themeName;
+    localStorage.setItem('user-theme', themeName);
+    document.querySelectorAll('.theme-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // console.log("테마가 변경되었습니다!");
+}
 
 
 </script>
 <section id="main" class="text-center" style="max-height:90%;">
-	<div class="main-wrapper">
+	<div class="main-visual">
 		<div class="main-divider main-info-top">
 			<div class=" main-column">
 				<div>2026. 05. 16 SAT</div>
@@ -287,11 +306,9 @@ function triggerUpload() {
 	
 	    <div class="addr-box">
 	      <div class="addr-text">
-	        서울 영등포구 문래로 164<br>
-	        SK리더스뷰 4층 JK아트컨벤션
+	        서울 영등포구 문래로 164 SK리더스뷰 4층 JK아트컨벤션
+	        <button class="btn-copy" onclick="copyAddress();">복사</button>
 	      </div>
-	
-	      <button class="btn-copy" onclick="copyAddress();">주소 복사</button>
 	
 	      <div class="nav-buttons">
 	        <a href="http://localhost:8080/#" class="nav-btn">카카오내비</a>
@@ -301,14 +318,36 @@ function triggerUpload() {
 	    </div>
   </section>
   
-  <!-- Dev -->
-  <section id="loc" class="fade-section">
-  <h3>Dev</h3>
+  <!-- 하객스냅 -->
+  <section id="snap" class="fade-section">
+  <h3>하객스냅</h3>
   <input type="file" id="hidden-file-input" multiple accept="image/*, video/*" style="display:none;">
-	<button type="button" class="btn-copy" id="btn-upload-main" onclick="triggerUpload();">
+	<button type="button" class="btn-round" id="btn-upload-main" onclick="triggerUpload();">
 	    실시간 웨딩사진 업로드
 	</button>
 	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>
+  </section>
+  
+  <section id="snap" class="fade-section">
+  <h3>실험실🧪</h3>
+  <div class="theme-selector">
+    <div class="theme-card active" onclick="applyTheme('default')">
+      <div class="color-dot default"></div>
+      <span>Classic</span>
+    </div>
+    <div class="theme-card" onclick="applyTheme('dark')">
+      <div class="color-dot dark"></div>
+      <span>Dark</span>
+    </div>
+    <div class="theme-card" onclick="applyTheme('forest')">
+      <div class="color-dot forest"></div>
+      <span>Natural</span>
+    </div>
+    <div class="theme-card" onclick="applyTheme('pink')">
+      <div class="color-dot pink"></div>
+      <span>Pink</span>
+    </div>
+  </div>
   </section>
 
 
