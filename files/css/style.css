@@ -480,6 +480,10 @@ section:nth-child(2n-1){background: var(--bg-color);}
 .main-visual { background-image: var(--bg-img);}
 h3 {color:var(--text-main);}
 
+.btn-copy{background:#f7f7f7;}
+.nav-buttons{border:1px solid var(--text-sub); background:#ffffff55;}
+.nav-buttons .btn-split{background:var(--text-sub);}
+.btn-copy{background:#ffffff55;}
 
 .theme-selector {
     display: flex;
