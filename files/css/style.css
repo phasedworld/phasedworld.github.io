@@ -464,13 +464,13 @@ section {
 
 /* 기본테마 */
 :root { --main-color:#fff4b0; --font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg'); }
-body.theme-dark { --main-color: #fff9f0; --font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
+body.theme-dark { --main-color: #f0f7ff; --font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
 body.theme-forest { --main-color: #e2eebb; --font-color:#f27042; --bg-img: url('../../files/img/mainpic1.jpg'); }
 body.theme-pink { --main-color: #fff9f0; --font-color:#e68585; --bg-img: url('../../files/img/whitepic.jpg'); }
-body.theme-butter { --main-color: #ffea70; --font-color:#ffffff; --bg-img: url('../../files/img/whitepic.jpg'); }
+body.theme-butter { --main-color: #F9F9F7; --font-color:#ffea70; --bg-img: url('../../files/img/darkpic.jpg'); }
 
 .color-dot.default { background: #fcfcfc; }
-.color-dot.dark { background: #333; }
+.color-dot.dark { background: #1b75bb; }
 .color-dot.forest { background: #E2EEBB; }
 .color-dot.pink { background: #f385a0; }
 
