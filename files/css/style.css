@@ -48,6 +48,11 @@
 	src: local('SUIT Heavy'), url('../../files/font/SUIT-Heavy.woff2') format('woff2');
 }
 
+/* 기본 컬러set*/
+:root { --bg-color:#fff4b0; --main-font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg');
+ --text-main: #222222; --text-sub: #555555; /* 1번 중요컬러: 본문, 소개글, 버튼 테두리 */ /* 2번 중요컬러: 타이틀, 성함 */
+}
+
 html { font-size: 16px; }
 @media (min-width: 768px) {
     html { font-size: 18px; }
@@ -55,7 +60,7 @@ html { font-size: 16px; }
 
 body {
   margin: 0; padding: 0;
-  color: #333;
+  color: var(--text-main);
   font-family: 'SUIT', sans-serif;
   background: #fcfcfc; /* 미색 */
   line-height: 1.6;
@@ -68,7 +73,7 @@ h2, h3, .invitation-msg {  }
 h2 { font-size: 2.2rem; font-weight: 800; margin: 0; }
 h3 {
   font-size: 1.2rem; 
-  color: #222222;
+  color: var(--text-main);;
   margin-bottom: 30px; 
   text-transform: uppercase;
   font-weight: 400;
@@ -134,7 +139,7 @@ section {
   backdrop-filter: blur(1px);
 }
 
-/* Swiper 구조 핵심 */
+/* Swiper 구조 */
 #gallery-pop .swiper-wrapper {
   width: 100%;
   height: 100%;
@@ -145,7 +150,6 @@ section {
   width: 100%;
   height: 100%;
   flex-shrink: 0;
-  
   position:relative;
 }
 
@@ -153,18 +157,14 @@ section {
 #gallery-pop .slide-inner {
   width: 100vw;
   height: calc(100vh - 40px);
-
   max-width: 100%;
   max-height: 83%;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-
   position: absolute;
   inset: 0;
   margin: auto;
-
   border-radius: 6px;
 }
 
@@ -235,13 +235,13 @@ section {
 .invitation-msg {
   font-size: 1.05rem;
   line-height: 2.2; /* 줄간격을 넓게 */
-  color: #555;
+  color: var(--text-main);
   word-break: keep-all;
 }
 
 .invitation-msg .small{
   font-size: 0.95rem;
-  color: #777;
+  color: var(--text-sub);
   margin-left: .25rem;
   margin-right: .25rem;
 }
@@ -461,11 +461,6 @@ section {
 /* ------------------------------------------------
    실험실
 ------------------------------------------------ */
-
-/* 기본테마 */
-:root { --bg-color:#fff4b0; --main-font-color:#ffffff; --bg-img: url('../../files/img/test02.jpg');
- --text-main: #222222; --text-sub: #555555; /* 1번 중요컬러: 본문, 소개글, 버튼 테두리 */ /* 2번 중요컬러: 타이틀, 성함 */
-}
 body.theme-dark { --bg-color: #f0f7ff; --main-font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
 body.theme-forest { --bg-color: #e2eebb; --main-font-color:#f27042; --bg-img: url('../../files/img/mainpic1.jpg');}
 body.theme-pink { --bg-color: #fff9f0; --main-font-color:#f385a0; --bg-img: url('../../files/img/whitepic.jpg'); }
