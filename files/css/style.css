@@ -116,6 +116,7 @@ section {
   inset: 0;
   display: none;
   z-index: 999;
+  touch-action:none;
 }
 
 #gallery-pop.show {

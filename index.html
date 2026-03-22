@@ -131,26 +131,36 @@ function copyAddress() {
 
 //갤러리 팝업
 var swiper = null;
-function openGallery(imgno){
-  if($("#gallery-pop .swiper-wrapper .swiper-slide").length == 0){
-	  var galleryhtml = `
-		  <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/mainpic1.jpg"/></div></div>
-	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/test02.jpg"/></div></div>
-	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/mainpic1.jpg"/></div></div>
-	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/test02.jpg"/></div></div>
-	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/mainpic1.jpg"/></div></div>
-	      <div class="swiper-slide"><div class="slide-inner swiper-zoom-container"><img class="zoom-img" src="./files/img/test02.jpg"/></div></div>
-	  `;
-	  $("#gallery-pop .swiper-wrapper").html(galleryhtml);
-  }
-  
-  swiper = new Swiper('.swiper', {
+function openGallery(obj){
+	if ($("#gallery-pop .swiper-wrapper .swiper-slide").length === 0) {
+        var galleryhtml = "";
+        $(".pic-grid div").each(function() {
+            var bg = $(this).css('background-image');
+            var src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+            galleryhtml += `
+                <div class="swiper-slide">
+                    <div class="slide-inner swiper-zoom-container">
+                        <img class="zoom-img" src="${src}"/>
+                    </div>
+                </div>`;
+        });
+        $("#gallery-pop .swiper-wrapper").html(galleryhtml);
+    }
+	
+    if (swiper !== null) {
+        swiper.destroy(); // 기존 인스턴스 파괴 (메모리 누수 및 이벤트 꼬임 방지)
+        swiper = null;
+    }
+    $("#dim-layer").addClass("show");
+    $("#gallery-pop").addClass("show");
+    
+  	swiper = new Swiper('.swiper', {
 	  // Optional parameters
 	  direction: 'horizontal',
 	  loop: true,
 	  observer: true,
 	  observeParents: true,
-	  initialSlide: (imgno-1),
+	  initialSlide: $(obj).index(),
 	  zoom: {
 		    maxRatio: 3,
 		    minRatio: 1,
@@ -188,9 +198,6 @@ function openGallery(imgno){
           event.preventDefault();
       }
   }, { passive: false });
-  
-  $("#dim-layer").addClass("show");
-	$("#gallery-pop").addClass("show");
 }
 
 function closeGallery(){
@@ -336,12 +343,12 @@ function applyTheme(themeName) {
   <section id="pic" class="fade-section visible">
   	<h3>갤러리</h3>
     <div class="pic-grid">
-      <div onclick="openGallery(1);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(2);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(3);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(4);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(5);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(6);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
     </div>
     <button class="pic-more" onclick="$('#pic .pic-grid').toggleClass('open');">open</button>
   </section>
