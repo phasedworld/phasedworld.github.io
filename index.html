@@ -23,7 +23,7 @@
 <script>
 Kakao.init('f070ce119133be025d17b4c5cb943a07');
 
-window.addEventListener('load', () => {
+$(function(){
 	//$("#main").css("height",$("body > .wrapper").width()*1.5);
 	
 	//저장 테마 확인
@@ -64,13 +64,23 @@ window.addEventListener('load', () => {
         map: map
     });
     
- 	// 지도를 클릭하면 조작이 가능해지도록 변경
+ 	// 지도를 클릭하면 조작이 가능
     naver.maps.Event.addListener(map, 'click', function() {
         map.setOptions({
             draggable: true,
             scrollWheel: true
         });
     });
+ 	
+    const galleryPop = document.getElementById('gallery-pop');
+    if (galleryPop) {
+        galleryPop.addEventListener('touchmove', function (event) {
+            // 핀치 줌시 브라우저 기본 동작 방지
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+    }
 
     const firebaseConfig = {
 	  apiKey: "AIzaSyDLwjHkQhFzYLyBbEriDvB6CzkUenDsK88",
@@ -132,8 +142,12 @@ function copyAddress() {
 //갤러리 팝업
 var swiper = null;
 function openGallery(obj){
-	if ($("#gallery-pop .swiper-wrapper .swiper-slide").length === 0) {
-        var galleryhtml = "";
+	$("#dim-layer").addClass("show");
+    $("#gallery-pop").addClass("show");
+    $("#gallery-pop").css("opacity", 0);
+    
+	if (swiper === null) {
+		var galleryhtml = "";
         $(".pic-grid div").each(function() {
             var bg = $(this).css('background-image');
             var src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
@@ -145,59 +159,49 @@ function openGallery(obj){
                 </div>`;
         });
         $("#gallery-pop .swiper-wrapper").html(galleryhtml);
-    }
-	
-    if (swiper !== null) {
-        swiper.destroy(); // 기존 인스턴스 파괴 (메모리 누수 및 이벤트 꼬임 방지)
-        swiper = null;
-    }
-    $("#dim-layer").addClass("show");
-    $("#gallery-pop").addClass("show");
     
-  	swiper = new Swiper('.swiper', {
-	  // Optional parameters
-	  direction: 'horizontal',
-	  loop: true,
-	  observer: true,
-	  observeParents: true,
-	  initialSlide: $(obj).index(),
-	  zoom: {
-		    maxRatio: 3,
-		    minRatio: 1,
-		    toggle: true
-	  },
-	  // If we need pagination
-	  pagination: {
-	    el: '.swiper-pagination',
-	    type: 'bullets',
-	  },
-
-	  // Navigation arrows
-	  navigation: {
-	    nextEl: '.swiper-button-next',
-	    prevEl: '.swiper-button-prev',
-	  },
-	  
-	  // And if we need scrollbar
-	  scrollbar: {
-	    el: '.swiper-scrollbar',
-	  },
-	  
-	// [추가] 줌 도중 슬라이드 방지 및 터치 감도 최적화
-	    touchStartPreventDefault: false,
-	    passiveListeners: false, // 터치 이벤트 가로채기 활성화
-	    touchMoveStopPropagation: true,
-});
-  
-//1. 갤러리 팝업 안에서만 핀치 줌 방지
-  const galleryPop = document.getElementById('gallery-pop');
-
-  galleryPop.addEventListener('touchmove', function (event) {
-      // 손가락이 2개 이상이고, 스케일 변화가 있을 때만 방어
-      if (event.touches.length > 1) {
-          event.preventDefault();
-      }
-  }, { passive: false });
+	  	swiper = new Swiper('.swiper', {
+		  // Optional parameters
+		  direction: 'horizontal',
+		  loop: true,
+		  observer: true,
+		  observeParents: true,
+		  initialSlide: $(obj).index(),
+		  zoom: {
+			    maxRatio: 3,
+			    minRatio: 1,
+			    toggle: true
+		  },
+		  // If we need pagination
+		  pagination: {
+		    el: '.swiper-pagination',
+		    type: 'bullets',
+		  },
+	
+		  // Navigation arrows
+		  navigation: {
+		    nextEl: '.swiper-button-next',
+		    prevEl: '.swiper-button-prev',
+		  },
+		  
+		  scrollbar: {
+		    el: '.swiper-scrollbar',
+		  },
+		  
+		// [추가] 줌 도중 슬라이드 방지 및 터치 감도 최적화
+		    touchStartPreventDefault: false,
+		    passiveListeners: false, // 터치 이벤트 가로채기 활성화
+		    touchMoveStopPropagation: true,
+		});
+	  	
+	  	$("#gallery-pop").css("opacity", 1);
+	} else {
+		swiper.zoom.out();
+        swiper.slideToLoop($(obj).index(), 0);
+        requestAnimationFrame(function() {
+            $("#gallery-pop").css("opacity", 1);
+        });
+    }
 }
 
 function closeGallery(){
