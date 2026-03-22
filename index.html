@@ -139,6 +139,18 @@ function copyAddress() {
 	navigator.clipboard.writeText(text).then(() => alert('주소가 복사되었습니다.'));
 }
 
+//갤러리(grid) 토글
+function toggleGridGallery(){
+	if($('#pic .pic-grid').hasClass('open')){
+		$('#pic .pic-grid').removeClass('open');
+		$("#pic-more").html("▸ 열기");
+	}else{
+		$('#pic .pic-grid').addClass('open');
+		$("#pic-more").html("▴ 접기");
+	}
+}
+
+
 //갤러리 팝업
 var swiper = null;
 function openGallery(obj){
@@ -354,7 +366,7 @@ function applyTheme(themeName) {
       <div onclick="openGallery(this);" style="background:url('./files/img/mainpic1.jpg') center/cover no-repeat;"></div>
       <div onclick="openGallery(this);" style="background:url('./files/img/test02.jpg') center/cover no-repeat;"></div>
     </div>
-    <button class="pic-more" onclick="$('#pic .pic-grid').toggleClass('open');">open</button>
+    <button id="pic-more" onclick="toggleGridGallery();">▸ 열기</button>
   </section>
   
   <!-- 하객스냅 -->

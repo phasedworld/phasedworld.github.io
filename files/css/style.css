@@ -320,7 +320,7 @@ section {
   
   transition: all 0.8s;
   max-height: min(
-    calc(((100vw - 8px) * 2 / 2) + 53px),
+    calc((100vw - 8px) * 2 / 2),
     500px
   );
   overflow: hidden;
@@ -338,21 +338,18 @@ section {
 	max-height: 5000px;
 }
 
-.pic-grid ~ .pic-more{
-  display:none;
-}
-
-.pic-grid:not(.open) ~ .pic-more{
+#pic-more{
   display:block;
   width:100%;
   text-align:center;
   font-size:17px;
   height:45px;
-  margin-top:-45px;
   z-index:111;
   position:absolute;
-  background:
-  linear-gradient(rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 25%, rgba(255,255,255,1)) 100%;
+}
+
+.pic-grid.open ~ #pic-more{
+  
 }
 
 /* 더보기 end*/
