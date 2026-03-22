@@ -234,7 +234,7 @@ section {
 ------------------------------------------------ */
 .invitation-msg {
   font-size: 1.05rem;
-  line-height: 2.2; /* 줄간격을 넓게 */
+  line-height: 2.2;
   color: var(--text-main);
   word-break: keep-all;
 }
@@ -244,6 +244,24 @@ section {
   color: var(--text-sub);
   margin-left: .25rem;
   margin-right: .25rem;
+}
+
+.weddinghost-msg {
+  margin-top:15px;
+  font-size: 1.05rem;
+  line-height: 2.2;
+  color: var(--text-main);
+  word-break: keep-all;
+}
+
+.weddinghost-msg .small{
+  font-size: 0.93rem;
+  color: var(--text-sub);
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+.weddinghost-msg .point{
+  font-weight:600;
 }
 
 /* ------------------------------------------------
