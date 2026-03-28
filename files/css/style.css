@@ -481,7 +481,7 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
     cursor: pointer;
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.5);
-    border: 1px solid #eee;
+    /*border: 1px solid #eee;*/
     transition: all 0.3s ease;
     text-align: center;
 }
@@ -500,9 +500,17 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
   background-repeat: no-repeat;
   overflow:hidden;
   border: 1px solid rgba(0,0,0,0.1);
-  filter: blur(2px);
 }
-.swiper-slide.active .color-dot {filter: none;}
+.swiper-slide:not(.active) .color-dot {
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 5000;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-transform: translateZ(0);
+	backface-visibility: hidden;
+	perspective: 5000;
+	transform: translate3d(0,0,0);
+	transform: translateZ(0);
+}
 
 .color-dot.default {background-image: url('../../files/img/main_yellow.jpg');}
 .color-dot.dark {background-image: url('../../files/img/2_black--1.jpg');}
@@ -514,6 +522,7 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
 	left:5%;bottom:5%;
 	font-size:13px;
 }
+.swiper-slide.active .mood-lab{color:#fff;text-shadow: 0px 0px 2px #333;}
 
 #lettering {
 	position:absolute; top:0; left:0;width:100%;height:100%;
