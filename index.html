@@ -39,9 +39,9 @@ $(function(){
         index = $target.index();
     }
     var labSwiper = new Swiper(".labSwiper", {
-       slidesPerView: 4,
+       slidesPerView: 3,
        centeredSlides: true,
-       spaceBetween: 30,
+       spaceBetween: 10,
        grabCursor: true,
        pagination: {
          el: ".swiper-pagination",
@@ -278,7 +278,7 @@ function applyTheme(themeName) {
 		</div>
 		<div class="main-divider fill-height">
 			<div class="main-column" style="position:relative; height:100%;">
-				<div class="name">정진성·박지은</div>
+				<div class="name">정진성 · 박지은</div>
 			</div>
 		</div>
 		<div class="main-divider main-info-bot">
@@ -402,19 +402,19 @@ function applyTheme(themeName) {
 	  <div class="swiper-wrapper">
 	    <div class="swiper-slide default active" onclick="applyTheme('default')">
 	      <div class="color-dot default"></div>
-	      <span>#mood1</span>
+	      <span class="mood-lab">#mood1</span>
 	    </div>
 	    <div class="swiper-slide dark" onclick="applyTheme('dark')">
 	      <div class="color-dot dark"></div>
-	      <span>#mood2</span>
+	      <span class="mood-lab">#mood2</span>
 	    </div>
 	    <div class="swiper-slide forest" onclick="applyTheme('forest')">
 	      <div class="color-dot forest"></div>
-	      <span>#mood3</span>
+	      <span class="mood-lab">#mood3</span>
 	    </div>
 	    <div class="swiper-slide pink" onclick="applyTheme('pink')">
 	      <div class="color-dot pink"></div>
-	      <span>#mood4</span>
+	      <span class="mood-lab">#mood4</span>
 	    </div>
 	  </div>
   </div>
