@@ -378,6 +378,10 @@ section {
   margin-bottom: 30px;
 }
 
+.addr-box, .loc-info {
+	font-family: 'SUIT', sans-serif;
+}
+
 .addr-text {
   font-size: 0.9rem; color: #555555; margin-bottom: 20px;
 }
