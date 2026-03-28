@@ -168,7 +168,7 @@ function openGallery(obj){
             galleryhtml += `
                 <div class="swiper-slide">
                     <div class="slide-inner swiper-zoom-container">
-                        <img class="zoom-img" src="${src}"/>
+                        <img class="zoom-img" src="${src}" loading="lazy"/>
                     </div>
                 </div>`;
         });
@@ -336,7 +336,7 @@ function applyTheme(themeName) {
   <section id="loc" class="fade-section">
 	    <h3>오시는 길</h3>
   	    <div id="map"></div>
-	    <div class="addr-box">
+	    <div class="addr-box sanserif">
 	      <div class="addr-text">
 	        서울특별시 영등포구 문래로 164 (문래동3가 55-16) SK리더스뷰 4층 JK아트컨벤션
 	        <button class="btn-copy" onclick="copyAddress();">복사</button>
@@ -350,9 +350,9 @@ function applyTheme(themeName) {
 	      </div>
 	    </div>
 	    <div class="loc-info">
-		    <p class="loc-info-title">대중교통</p>
+		    <p class="loc-info-title sanserif">대중교통</p>
 		    <p>문래역 5번출구에서 전방 직진 300m</p>
-		    <p class="loc-info-title">자차</p>
+		    <p class="loc-info-title sanserif">자차</p>
 		    <p>네비게이션 'JK아트컨벤션'입력→[웨딩홀 주차장] 입간판에서 우회전→<b>룩스상가 상가주차장</b>으로 진입</p>
 	    </div>
   </section>
@@ -368,14 +368,14 @@ function applyTheme(themeName) {
       <div onclick="openGallery(this);" style="background:url('./files/img/4_bridecarry--crop.jpg') center/cover no-repeat;"></div>
       <div onclick="openGallery(this);" style="background:url('./files/img/main_green.jpg') center/cover no-repeat;"></div>
     </div>
-    <button id="pic-more" onclick="toggleGridGallery();">▸ 열기</button>
+    <button id="pic-more" class="sanserif" onclick="toggleGridGallery();">▸ 열기</button>
   </section>
   
   <!-- 하객스냅 -->
   <section id="snap" class="fade-section">
   <h3>하객스냅</h3>
   <input type="file" id="hidden-file-input" multiple accept="image/*, video/*" style="display:none;">
-	<button type="button" class="btn-round" id="upload-btn" onclick="triggerUpload();">
+	<button type="button" class="btn-round sanserif" id="upload-btn" onclick="triggerUpload();">
 	    실시간 웨딩사진 업로드
 	</button>
 	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>

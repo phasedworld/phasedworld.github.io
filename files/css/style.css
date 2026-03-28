@@ -61,7 +61,6 @@ html { font-size: 16px; }
 body {
   margin: 0; padding: 0;
   color: var(--text-main);
-  /* font-family: 'SUIT', sans-serif; */
   font-family: 'MaruBuriSemiBold', serif;
   background: #fcfcfc; /* 미색 */
   line-height: 1.6;
@@ -82,6 +81,10 @@ h3 {
 
 .marubold{
 	font-family: 'MaruBuriBold', serif;
+}
+
+.sanserif{
+	font-family: 'SUIT', sans-serif;
 }
 
 /* ------------------------------------------------
@@ -376,10 +379,6 @@ section {
   background: #f0f0f0;
   border-radius: 8px; /* 지도 모서리 둥글게 */
   margin-bottom: 30px;
-}
-
-.addr-box, .loc-info {
-	font-family: 'SUIT', sans-serif;
 }
 
 .addr-text {
