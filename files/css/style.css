@@ -137,6 +137,11 @@ section {
 	z-index:2;
 	color:#fff;
 	cursor:pointer;
+	width:20px; height:20px;
+	background:url('../../files/img/close-btn.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 /* Swiper 컨테이너 */
