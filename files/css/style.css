@@ -61,7 +61,8 @@ html { font-size: 16px; }
 body {
   margin: 0; padding: 0;
   color: var(--text-main);
-  font-family: 'SUIT', sans-serif;
+  /* font-family: 'SUIT', sans-serif; */
+  font-family: 'MaruBuriSemiBold', serif;
   background: #fcfcfc; /* 미색 */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -72,11 +73,15 @@ h2, h3, .invitation-msg {  }
 
 h2 { font-size: 2.2rem; font-weight: 800; margin: 0; }
 h3 {
-  font-size: 1.2rem; 
-  color: var(--text-main);;
+  font-size: 1.3rem; 
+  color: var(--text-main);
   margin-bottom: 30px; 
   text-transform: uppercase;
-  font-weight: 400;
+  font-family: 'MaruBuriBold', serif;
+}
+
+.marubold{
+	font-family: 'MaruBuriBold', serif;
 }
 
 /* ------------------------------------------------
@@ -197,12 +202,12 @@ section {
 }
 
 .main-divider{
-	font-size: 16px;
+	font-size: 1.1rem;
 }
 
 .main-info-top{
 	height:10%;
-	margin-top:5%;
+	margin-top:6%;
 }
 
 .main-divider.fill-height{
@@ -215,7 +220,7 @@ section {
 
 .main-info-bot{
 	fontt-size:14px;
-	margin-bottom:5%;
+	margin-bottom:6%;
 }
 
 .main-row {
@@ -442,7 +447,7 @@ section {
 /* ------------------------------------------------
    실험실
 ------------------------------------------------ */
-body.theme-dark { --bg-color: #f0f7ff; --main-font-color:#1b75bb; --bg-img: url('../../files/img/darkpic.jpg'); }
+body.theme-dark { --bg-color: #f0f7ff; --main-font-color:#1b75bb; --bg-img: url('../../files/img/2_black--1.jpg'); }
 body.theme-forest { --bg-color: #e2eebb; --main-font-color:#f27042; --bg-img: url('../../files/img/main_green.jpg');}
 body.theme-pink { --bg-color: #fff9f0; --main-font-color:#f385a0; --bg-img: url('../../files/img/whitepic.jpg'); }
 
