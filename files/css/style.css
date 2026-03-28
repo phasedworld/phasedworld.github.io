@@ -239,6 +239,11 @@ section {
 	align-items:center;
 }
 
+.footer{
+	margin-top:100px;
+	font-size: 0.8rem; color: var(--text-sub);
+}
+
 
 /* ------------------------------------------------
    INTRO (INVITATION)
@@ -401,7 +406,9 @@ section {
 }
 .btn-copy{
 	background:#f7f7f7;
-	border-radius:5px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	padding:3px 10px;
 }
 
 .nav-buttons {
@@ -465,11 +472,12 @@ section:nth-child(2n-1){background: var(--bg-color);}
 .main-visual { background-image: var(--bg-img);}
 h3 {color:var(--text-main);}
 
-.btn-copy{background:#f7f7f7;}
-.nav-buttons{border:1px solid var(--text-sub); background:#ffffff55;}
-.nav-buttons .btn-split{background:var(--text-sub);}
-.btn-copy{background:#ffffff55;}
-.btn-round{border:1px solid var(--text-sub); background:#ffffff55;}
+/*buttons*/
+section:nth-child(2n)
+.nav-buttons,.btn-copy,.btn-round,.hide-btn{background:#f7f7f7;}
+section:nth-child(2n-1)
+.nav-buttons,.btn-copy,.btn-round,.hide-btn{background:#ffffff55;}
+
 body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
 , body:not(.theme-pink) .d-day::after, body:not(.theme-butter) .d-day::after {background:var(--text-sub);}
 
@@ -545,3 +553,47 @@ body.theme-pink #lettering {
 	text-shadow:none;
     filter: invert(58%) sepia(33%) saturate(628%) hue-rotate(296deg) brightness(103%) contrast(91%);
 }
+
+/* ------------------------------------------------
+   contribution
+------------------------------------------------ */
+.description-msg{
+	font-size: 0.93rem;
+    color: var(--text-sub);
+}
+
+.contribution-tbl{
+    font-size: 1.0rem;
+    color: var(--text-sub);
+    color: var(--text-main);
+    word-break: keep-all;
+}
+.contribution-info{
+	margin-top: 10px;
+}
+
+.hide-btn{
+	padding: 8px 0;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-main);
+    border: 1px solid #ddd;
+    background:#ffffff55;
+}
+
+.bank-account{
+	font-size: 0.93rem;
+	padding: 12px 15px;
+    line-height: 26px;
+    letter-spacing: 0;
+    text-align: left;
+    background: #fff;
+    position: relative;
+}
+
+.bank-account .btn-copy{
+	position: absolute;
+	top: 12px; right: 15px;
+}
+
+.contribution-info:not(.active) .bank-account{display:none;}

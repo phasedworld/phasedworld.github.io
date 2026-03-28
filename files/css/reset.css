@@ -13,7 +13,7 @@ button { cursor:pointer; background:transparent;}
 
 /* Normalize */
 html {height:100%; font-size:62.5%;}
-body {height:100%; font-size:1.6rem; body {font-family: 'SUIT', sans-serif;}
+body {height:100%; /* font-size:1.6rem; */}
 select {appearance:none;}
 select::-ms-expand {display:none;}
 input[type="search"]::-webkit-search-decoration,
