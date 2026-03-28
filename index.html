@@ -28,13 +28,27 @@ Kakao.init('f070ce119133be025d17b4c5cb943a07');
 $(function(){
 	//$("#main").css("height",$("body > .wrapper").width()*1.5);
 	
-	//저장 테마 확인
+	//저장 테마 확인, 테마 swipe set
+	var index = 0;
 	var savedTheme = localStorage.getItem('user-theme');
     if (savedTheme) {
         document.body.className = "theme-"+savedTheme;
-        $(".theme-card").removeClass('active');
-        $(".theme-card."+savedTheme).addClass('active');
+        $(".swiper-slide").removeClass('active');
+        var $target = $(".swiper-slide." + savedTheme);
+        $target.addClass('active');
+        index = $target.index();
     }
+    var labSwiper = new Swiper(".labSwiper", {
+       slidesPerView: 4,
+       centeredSlides: true,
+       spaceBetween: 30,
+       grabCursor: true,
+       pagination: {
+         el: ".swiper-pagination",
+         clickable: true,
+       },
+     });
+    labSwiper.slideToLoop(index);
 	
 	//글자 스르륵
 	var observer = new IntersectionObserver(entries => {
@@ -134,6 +148,7 @@ $(function(){
    	    realInput.value = ""; // 선택 리셋
    	  }
    	});
+    
 });
 
 function copyAddress() {
@@ -239,7 +254,7 @@ function goKakaoNavi() {
 function applyTheme(themeName) {
     document.body.className = 'theme-' + themeName;
     localStorage.setItem('user-theme', themeName);
-    document.querySelectorAll('.theme-card').forEach(card => {
+    document.querySelectorAll('.swiper-slide').forEach(card => {
         card.classList.remove('active');
     });
     event.currentTarget.classList.add('active');
@@ -381,25 +396,27 @@ function applyTheme(themeName) {
 	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>
   </section>
   
-  <section id="snap" class="fade-section">
+  <section id="lab" class="fade-section">
   <h3>실험실🧪</h3>
-  <div class="theme-selector">
-    <div class="theme-card default active" onclick="applyTheme('default')">
-      <div class="color-dot default"></div>
-      <span>Classic</span>
-    </div>
-    <div class="theme-card dark" onclick="applyTheme('dark')">
-      <div class="color-dot dark"></div>
-      <span>Dark</span>
-    </div>
-    <div class="theme-card forest" onclick="applyTheme('forest')">
-      <div class="color-dot forest"></div>
-      <span>Natural</span>
-    </div>
-    <div class="theme-card pink" onclick="applyTheme('pink')">
-      <div class="color-dot pink"></div>
-      <span>Pink</span>
-    </div>
+  <div class="labSwiper">
+	  <div class="swiper-wrapper">
+	    <div class="swiper-slide default active" onclick="applyTheme('default')">
+	      <div class="color-dot default"></div>
+	      <span>#mood1</span>
+	    </div>
+	    <div class="swiper-slide dark" onclick="applyTheme('dark')">
+	      <div class="color-dot dark"></div>
+	      <span>#mood2</span>
+	    </div>
+	    <div class="swiper-slide forest" onclick="applyTheme('forest')">
+	      <div class="color-dot forest"></div>
+	      <span>#mood3</span>
+	    </div>
+	    <div class="swiper-slide pink" onclick="applyTheme('pink')">
+	      <div class="color-dot pink"></div>
+	      <span>#mood4</span>
+	    </div>
+	  </div>
   </div>
   </section>
 
