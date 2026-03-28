@@ -219,6 +219,7 @@ section {
 .main-divider.fill-height .name{
 	position:absolute;
 	right:10%; bottom:10%;
+	letter-spacing:7%;
 }
 
 .main-info-bot{
