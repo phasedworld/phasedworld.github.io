@@ -488,16 +488,13 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
 	height: 150px;
     cursor: pointer;
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.5);
-    /*border: 1px solid #eee;*/
+    background: rgba(255, 255, 255);
     transition: all 0.3s ease;
     text-align: center;
 }
 
 .labSwiper .swiper-slide.active {
     border: 1px solid #333;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transform: translateY(-5px);
 }
 
 .color-dot {
@@ -507,17 +504,9 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
   background-position: center;
   background-repeat: no-repeat;
   overflow:hidden;
-  border: 1px solid rgba(0,0,0,0.1);
 }
 .swiper-slide:not(.active) .color-dot {
-	-webkit-backface-visibility: hidden;
-	-webkit-perspective: 5000;
-	-webkit-transform: translate3d(0,0,0);
-	-webkit-transform: translateZ(0);
-	backface-visibility: hidden;
-	perspective: 5000;
-	transform: translate3d(0,0,0);
-	transform: translateZ(0);
+	opacity:0.5;
 }
 
 .color-dot.default {background-image: url('../../files/img/main_yellow.jpg');}
