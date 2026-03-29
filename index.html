@@ -388,7 +388,9 @@ function applyTheme(themeName) {
       <div onclick="openGallery(this);" style="background:url('./files/img/4_bridecarry--crop.jpg') center/cover no-repeat;"></div>
       <div onclick="openGallery(this);" style="background:url('./files/img/main_green.jpg') center/cover no-repeat;"></div>
     </div>
-    <button id="pic-more" class="sanserif" onclick="toggleGridGallery();">▸ 열기</button>
+    <div class="pic-footer">
+    <button id="pic-more" class="btn btn-round sanserif" onclick="toggleGridGallery();">▸ 열기</button>
+  	</div>
   </section>
   
   <section id="snap" class="fade-section">
@@ -442,7 +444,7 @@ function applyTheme(themeName) {
    	<div class="contribution-info">
    		<div class="btn btn-hide" onclick="$(this).closest('.contribution-info').toggleClass('active');">신랑측 계좌번호</div>
    		<div class="bank-account sanserif">
-   		<div class="bank-account-inner">국민 <span class="small">|</span> 524902-01-387615<br/>
+   		<div class="bank-account-inner">국민<div class="btn-split"></div>524902-01-387615<br/>
    		정진성</div>
    		<button class="btn btn-copy" onclick="copyBank('524902-01-387615');">복사</button>
    		</div>
@@ -450,7 +452,7 @@ function applyTheme(themeName) {
    	<div class="contribution-info">
    		<div class="btn btn-hide" onclick="$(this).closest('.contribution-info').toggleClass('active');">신부측 계좌번호</div>
    		<div class="bank-account sanserif">
-   		<div class="bank-account-inner">국민 <span class="small">|</span> 493602-01-248669<br/>
+   		<div class="bank-account-inner">국민<div class="btn-split"></div>493602-01-248669<br/>
    		박지은</div>
    		<button class="btn btn-copy" onclick="copyBank('493602-01-248669');">복사</button>
    		</div>

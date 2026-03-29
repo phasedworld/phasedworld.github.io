@@ -357,16 +357,11 @@ section {
 	max-height: 5000px;
 }
 
-#pic-more{
+.pic-footer{
   display:block;
   width:100%;
   text-align:center;
-  font-size:17px;
-  height:45px;
-}
-
-.pic-grid.open ~ #pic-more{
-  
+  padding:5px 0px;
 }
 
 /* 더보기 end*/
@@ -422,8 +417,11 @@ section {
   padding:5px 0px;
 }
 
-.nav-buttons .btn-split{
+.btn-split{
+	display:inline-block;
+	vertical-align: middle;
 	width:1px; height:20px;
+	margin:0px 7px;
 	background:#ddd;
 }
 
