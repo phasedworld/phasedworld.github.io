@@ -341,7 +341,7 @@ section {
   transition: all 0.8s;
   max-height: min(
     calc(((100vw - 28px) * 2 / 2)) + 8px,
-    500px
+    480px
   );
   overflow: hidden;
 }
