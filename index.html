@@ -359,9 +359,9 @@ function applyTheme(themeName) {
 	    <div class="addr-box sanserif">
 	      <div class="addr-text">
 	        서울특별시 영등포구 문래로 164 (문래동3가 55-16) SK리더스뷰 4층 JK아트컨벤션
-	        <button class="btn-copy" onclick="copyAddress();">복사</button>
+	        <button class="btn btn-copy" onclick="copyAddress();">복사</button>
 	      </div>
-	      <div class="nav-buttons">
+	      <div class="btn nav-buttons">
 	        <a href="#" onclick="goKakaoNavi(); return false;" class="nav-btn">카카오내비</a>
 	        <span class="btn-split"></span>
 	        <a href="https://naver.me/xuCppMXy" target="_blank" class="nav-btn">네이버지도</a>
@@ -400,7 +400,7 @@ function applyTheme(themeName) {
   <br/>
   </div>
   <input type="file" id="hidden-file-input" multiple accept="image/*, video/*" style="display:none;">
-	<button type="button" class="btn-round sanserif" id="upload-btn" onclick="triggerUpload();">
+	<button type="button" class="btn btn-round sanserif" id="upload-btn" onclick="triggerUpload();">
 	    사진 공유하기
 	</button>
 	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>
@@ -440,19 +440,19 @@ function applyTheme(themeName) {
   </div>
   <div class="contribution-tbl">
    	<div class="contribution-info">
-   		<div class="hide-btn" onclick="$(this).closest('.contribution-info').toggleClass('active');">신랑측 계좌번호</div>
+   		<div class="btn btn-hide" onclick="$(this).closest('.contribution-info').toggleClass('active');">신랑측 계좌번호</div>
    		<div class="bank-account sanserif">
-   		<div class="bank-account-inner">국민 | 524902-01-387615<br/>
+   		<div class="bank-account-inner">국민 <span class="small">|</span> 524902-01-387615<br/>
    		정진성</div>
-   		<button class="btn-copy" onclick="copyBank('524902-01-387615');">복사</button>
+   		<button class="btn btn-copy" onclick="copyBank('524902-01-387615');">복사</button>
    		</div>
    	</div>
    	<div class="contribution-info">
-   		<div class="hide-btn" onclick="$(this).closest('.contribution-info').toggleClass('active');">신부측 계좌번호</div>
+   		<div class="btn btn-hide" onclick="$(this).closest('.contribution-info').toggleClass('active');">신부측 계좌번호</div>
    		<div class="bank-account sanserif">
-   		<div class="bank-account-inner">국민 | 493602-01-248669<br/>
+   		<div class="bank-account-inner">국민 <span class="small">|</span> 493602-01-248669<br/>
    		박지은</div>
-   		<button class="btn-copy" onclick="copyBank('493602-01-248669');">복사</button>
+   		<button class="btn btn-copy" onclick="copyBank('493602-01-248669');">복사</button>
    		</div>
    	</div>
   </div>

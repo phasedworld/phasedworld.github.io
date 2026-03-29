@@ -337,10 +337,10 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px; /* 간격 좁히기 */
-  
+  padding: 0px 10px;
   transition: all 0.8s;
   max-height: min(
-    calc((100vw - 8px) * 2 / 2),
+    calc(((100vw - 28px) * 2 / 2)) + 8px,
     500px
   );
   overflow: hidden;
@@ -349,7 +349,6 @@ section {
 .pic-grid div {
   width: 100%; aspect-ratio: 1 / 1;
   background-color: #eee;
-  border-radius: 4px; /* 살짝 둥글게 */
   background-position: center; background-size: cover;
 }
 
@@ -364,8 +363,6 @@ section {
   text-align:center;
   font-size:17px;
   height:45px;
-  z-index:111;
-  position:absolute;
 }
 
 .pic-grid.open ~ #pic-more{
@@ -376,7 +373,7 @@ section {
 
 .btn-round {
   display: inline-block;
-  background: #f7f7f7; color: #333;
+  color: #333;
   border: 1px solid #ddd;
   padding: 10px 20px;
   border-radius: 50px;
@@ -420,8 +417,6 @@ section {
   margin-top: 10px;
   display: flex; gap: 4px;
   flex-direction: row;
-  background:#f7f7f7;
-  border:1px solid #ddd;
   border-radius:5px;
   align-items:center;
   padding:5px 0px;
@@ -478,10 +473,10 @@ section:nth-child(2n-1){background: var(--bg-color);}
 h3 {color:var(--text-main);}
 
 /*buttons*/
-section:nth-child(2n)
-.nav-buttons,.btn-copy,.btn-round,.hide-btn{background:#f7f7f7;}
-section:nth-child(2n-1)
-.nav-buttons,.btn-copy,.btn-round,.hide-btn{background:#ffffff55;}
+section:nth-child(2n) .btn{background:#f7f7f7; border:1px solid #ddd;}
+section:nth-child(2n-1) .btn{background:rgba(255,255,255,0.85);
+  border:1px solid rgba(255,255,255,1);
+}
 
 body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
 , body:not(.theme-pink) .d-day::after, body:not(.theme-butter) .d-day::after {background:var(--text-sub);}
@@ -563,13 +558,14 @@ body.theme-pink #lettering {
 	margin-top: 10px;
 }
 
-.hide-btn{
+.btn-hide{
 	padding: 8px 0;
     text-align: center;
     cursor: pointer;
     color: var(--text-main);
     border: 1px solid #ddd;
     background:#ffffff55;
+    border-radius:5px;
 }
 
 .bank-account{
