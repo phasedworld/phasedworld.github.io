@@ -74,7 +74,7 @@ $(function(){
         scrollWheel: false     // 마우스 휠로 확대 금지
     };
     
-    var map = new naver.maps.Map('map', mapOptions);
+    map = new naver.maps.Map('map', mapOptions);
     var marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(weddingLocation),
         map: map
@@ -82,10 +82,7 @@ $(function(){
     
  	// 지도를 클릭하면 조작이 가능
     naver.maps.Event.addListener(map, 'click', function() {
-        map.setOptions({
-            draggable: true,
-            scrollWheel: true
-        });
+    	enableMap();
     });
  	
     const galleryPop = document.getElementById('gallery-pop');
@@ -150,6 +147,30 @@ $(function(){
    	});
     
 });
+
+var map = null;// 지도 객체
+var mapActive = false;
+var mapTimer = null;
+function enableMap() {
+  if (!map) return;
+  if (mapActive) return;
+  map.setOptions({
+    draggable: true,
+    scrollWheel: true
+  });
+  mapActive = true;
+  // 3초 후 다시 잠금
+  mapTimer = setTimeout(disableMap, 3000);
+}
+
+function disableMap() {
+  if (!map) return;
+  map.setOptions({
+    draggable: false,
+    scrollWheel: false
+  });
+  mapActive = false;
+}
 
 function copyAddress() {
 	var text = "서울 영등포구 문래로 164 SK리더스뷰 JK아트컨벤션";

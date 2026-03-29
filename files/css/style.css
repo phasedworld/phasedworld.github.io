@@ -369,7 +369,6 @@ section {
 .btn-round {
   display: inline-block;
   color: #333;
-  border: 1px solid #ddd;
   padding: 10px 20px;
   border-radius: 50px;
   font-size: 0.9rem; cursor: pointer;
