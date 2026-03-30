@@ -576,10 +576,10 @@ body.theme-pink #lettering {
     position: relative;
     transition: all 0.8s ease;
     max-height: 100px;
+    margin-top:-5px;
 }
 
 .bank-account-inner{
-	margin-top:-5px;
 	padding: 12px 15px;
 }
 
