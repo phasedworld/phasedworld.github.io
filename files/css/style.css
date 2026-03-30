@@ -456,12 +456,12 @@ section {
 /* ------------------------------------------------
    실험실
 ------------------------------------------------ */
-body.theme-dark { --bg-color: #f0f7ff; --main-font-color:#1b75bb; --bg-img: url('../../files/img/photo/main_red.jpg'); }
+body.theme-dark { --bg-color: #f9f0ed; /*--main-font-color:#1b75bb;*/--main-font-color:#ffffff; --bg-img: url('../../files/img/photo/main_red.jpg'); }
 body.theme-forest { --bg-color: #e2eebb; --main-font-color:#f27042; --bg-img: url('../../files/img/photo/main_green.jpg');}
 body.theme-pink { --bg-color: #fff9f0; --main-font-color:#f385a0; --bg-img: url('../../files/img/photo/whitepic.jpg');}
 
 #main{ color:var(--main-font-color);}
-.theme-dark #main { text-shadow:none; }
+.theme-dark #main {  }
 .theme-forest #main { text-shadow:none; }
 .theme-pink #main { text-shadow:none; }
 
@@ -522,8 +522,9 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
 }
 body.theme-dark #lettering {
 	background:url('../../files/img/blackletter.png') center/cover no-repeat;
-	text-shadow:none;
-    filter: invert(36%) sepia(98%) saturate(757%) hue-rotate(175deg) brightness(87%) contrast(91%);
+	/*
+    filter: invert(36%) sepia(98%) saturate(757%) hue-rotate(175deg) brightness(87%) contrast(91%);*/
+    filter: invert(28%) sepia(66%) saturate(7493%) hue-rotate(344deg) brightness(89%) contrast(88%);
 	
 }
 body.theme-forest #lettering {
