@@ -49,7 +49,7 @@
 }
 
 /* 기본 컬러set*/
-:root { --bg-color:#fff4b0; --main-font-color:#ffffff; --bg-img: url('../../files/img/main_yellow.jpg');
+:root { --bg-color:#fff4b0; --main-font-color:#ffffff; --bg-img: url('../../files/img/photo/main_yellow.jpg');
  --text-main: #222222; --text-sub: #555555; /* 1번 중요컬러: 본문, 소개글, 버튼 테두리 */ /* 2번 중요컬러: 타이틀, 성함 */
 }
 
@@ -206,7 +206,7 @@ section {
   	margin: 0 auto;
 	display:flex;
 	flex-direction:column;
-	background:url('../../files/img/main_yellow.jpg') center/cover no-repeat;
+	background:url('../../files/img/photo/main_yellow.jpg') center/cover no-repeat;
 }
 
 .main-divider{
@@ -390,7 +390,7 @@ section {
 
 .btn-copy:before{
 	content: "";
-	background-image: url('../../files/img/icon_copy.png');
+	background-image: url('../../files/img/photo/icon_copy.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -456,9 +456,9 @@ section {
 /* ------------------------------------------------
    실험실
 ------------------------------------------------ */
-body.theme-dark { --bg-color: #f0f7ff; --main-font-color:#1b75bb; --bg-img: url('../../files/img/2_black--1.jpg'); }
-body.theme-forest { --bg-color: #e2eebb; --main-font-color:#f27042; --bg-img: url('../../files/img/main_green.jpg');}
-body.theme-pink { --bg-color: #fff9f0; --main-font-color:#f385a0; --bg-img: url('../../files/img/whitepic.jpg'); }
+body.theme-dark { --bg-color: #f0f7ff; --main-font-color:#1b75bb; --bg-img: url('../../files/img/photo/main_red.jpg'); }
+body.theme-forest { --bg-color: #e2eebb; --main-font-color:#f27042; --bg-img: url('../../files/img/photo/main_green.jpg');}
+body.theme-pink { --bg-color: #fff9f0; --main-font-color:#f385a0; --bg-img: url('../../files/img/photo/whitepic.jpg');}
 
 #main{ color:var(--main-font-color);}
 .theme-dark #main { text-shadow:none; }
@@ -467,6 +467,7 @@ body.theme-pink { --bg-color: #fff9f0; --main-font-color:#f385a0; --bg-img: url(
 
 section:nth-child(2n-1){background: var(--bg-color);}
 .main-visual { background-image: var(--bg-img);}
+/*body .main-visual { background-image: linear-gradient(to bottom, #fff0 70%, #fff 100%),var(--bg-img);}*/
 h3 {color:var(--text-main);}
 
 /*buttons*/
@@ -502,10 +503,10 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
 	opacity:0.5;
 }
 
-.color-dot.default {background-image: url('../../files/img/main_yellow.jpg');}
-.color-dot.dark {background-image: url('../../files/img/2_black--1.jpg');}
-.color-dot.forest {background-image: url('../../files/img/main_green.jpg');}
-.color-dot.pink {background-image: url('../../files/img/whitepic.jpg');}
+.color-dot.default {background-image: url('../../files/img/photo/main_yellow.jpg');}
+.color-dot.dark {background-image: url('../../files/img/photo/main_red.jpg');}
+.color-dot.forest {background-image: url('../../files/img/photo/main_green.jpg');}
+.color-dot.pink {background-image: url('../../files/img/photo/whitepic.jpg');}
 
 .mood-lab{
 	position:absolute;

@@ -3,7 +3,7 @@
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta property="og:title" content="정진성·박지은의 결혼식에 초대합니다" />
 <meta property="og:description" content="2026년 5월 16일, 저희 결혼합니다." />
-<meta property="og:image" content="https://jieunsung.pages.dev/files/img/main_yellow.jpg" />
+<meta property="og:image" content="https://jieunsung.pages.dev/files/img/photo/main_yellow.jpg" />
 <meta property="og:url" content="https://jieunsung.pages.dev/" />
 <meta property="og:type" content="website" />
 <title>정진성·박지은의 결혼식에 초대합니다</title>
@@ -206,10 +206,20 @@ function openGallery(obj){
         $(".pic-grid div").each(function() {
             var bg = $(this).css('background-image');
             var src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+            var baseSrc = src.replace('/icon_', '/');
+            
+         	// 2. 확장자 분리 및 webp 경로 생성
+            var lastDotIndex = baseSrc.lastIndexOf('.');
+            var rawPath = baseSrc.substring(0, lastDotIndex);
+            var webpSrc = rawPath + ".webp";
+
             galleryhtml += `
                 <div class="swiper-slide">
                     <div class="slide-inner swiper-zoom-container">
-                        <img class="zoom-img" src="${src}" loading="lazy"/>
+                        <img class="zoom-img" 
+                             src="${webpSrc}" 
+                             onerror="this.onerror=null; this.src='${baseSrc}';" 
+                             loading="lazy" />
                     </div>
                 </div>`;
         });
@@ -402,12 +412,12 @@ function applyTheme(themeName) {
   <section id="pic" class="fade-section visible">
   	<h3>갤러리</h3>
     <div class="pic-grid">
-      <div onclick="openGallery(this);" style="background:url('./files/img/main_yellow.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(this);" style="background:url('./files/img/1_white--1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(this);" style="background:url('./files/img/2_black--1.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(this);" style="background:url('./files/img/3_longshot--modify.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(this);" style="background:url('./files/img/4_bridecarry--crop.jpg') center/cover no-repeat;"></div>
-      <div onclick="openGallery(this);" style="background:url('./files/img/main_green.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/photo/main_yellow.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/photo/1_white.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/photo/icon_main_red.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/photo/icon_3_longshot.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/photo/icon_4_bridecarry.jpg') center/cover no-repeat;"></div>
+      <div onclick="openGallery(this);" style="background:url('./files/img/photo/icon_main_green.jpg') center/cover no-repeat;"></div>
     </div>
     <div class="pic-footer">
     <button id="pic-more" class="btn btn-round sanserif" onclick="toggleGridGallery();">▸ 열기</button>
