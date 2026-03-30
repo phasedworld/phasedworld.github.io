@@ -390,7 +390,7 @@ section {
 
 .btn-copy:before{
 	content: "";
-	background-image: url('../../files/img/photo/icon_copy.png');
+	background-image: url('../../files/img/icon_copy.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
