@@ -456,7 +456,7 @@ section {
 /* ------------------------------------------------
    실험실
 ------------------------------------------------ */
-body.theme-dark { --bg-color: #f9f0ed; /*--main-font-color:#1b75bb;*/--main-font-color:#ffffff; --bg-img: url('../../files/img/photo/main_red.jpg'); }
+body.theme-dark { --bg-color: #f9f0ed; /*--main-font-color:#EAE4D9;*/--main-font-color:#ffffff; --bg-img: url('../../files/img/photo/main_red.jpg'); }
 body.theme-forest { --bg-color: #e2eebb; --main-font-color:#f27042; --bg-img: url('../../files/img/photo/main_green.jpg');}
 body.theme-pink { --bg-color: #fff9f0; --main-font-color:#f385a0; --bg-img: url('../../files/img/photo/whitepic.jpg');}
 
