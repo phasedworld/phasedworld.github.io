@@ -549,6 +549,13 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
     background:url('../../files/img/lettering.png') center/cover no-repeat;
     text-shadow: 1px 1px 1px #333;
 }
+
+#share {
+	width:25px;height:25px;
+    background:url('../../files/img/share-icon.png') center/cover no-repeat;
+    cursor:pointer;
+    display:inline-block;
+}
 body.theme-dark #lettering {
 	background:url('../../files/img/blackletter.png') center/cover no-repeat;
 	/*
