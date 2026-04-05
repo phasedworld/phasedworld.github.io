@@ -299,35 +299,13 @@ function closeMood(){
 }
 
 function shareKakao() {
-  Kakao.Share.sendDefault({
-    objectType: 'feed',
-    content: {
-      title: '정진성·박지은의 결혼식에 초대합니다',
-      description: '2026년 5월 16일 오전 11시\n문래 JK아트컨벤션 아트리움홀',
-      imageUrl: 'https://jieunsung.pages.dev/files/img/photo/main_yellow.jpg', // 미리보기 메인 사진
-      link: {
-        mobileWebUrl: 'https://jieunsung.pages.dev/',
-        webUrl: 'https://jieunsung.pages.dev/',
-      },
-    },
-    buttons: [
-      {
-        title: '모바일 청첩장 보기',
-        link: {
-          mobileWebUrl: 'https://jieunsung.pages.dev/',
-          webUrl: 'https://jieunsung.pages.dev/',
-        },
-      },
-      {
-        title: '위치 확인하기',
-        link: {
-          mobileWebUrl: 'https://jieunsung.pages.dev/#loc', // 오시는 길 섹션으로 바로 이동
-          webUrl: 'https://jieunsung.pages.dev/#loc',
-        },
-      },
-    ],
-  });
-}
+	  // 카카오톡 메시지 템플릿 ID 호출
+	  Kakao.Share.sendCustom({
+	    templateId: 131711,
+	    templateArgs: {
+	    },
+	  });
+	}
 
 
 </script>
