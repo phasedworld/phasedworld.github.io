@@ -33,23 +33,11 @@ $(function(){
 	var savedTheme = localStorage.getItem('user-theme');
     if (savedTheme) {
         document.body.className = "theme-"+savedTheme;
-        $(".swiper-slide").removeClass('active');
-        var $target = $(".swiper-slide." + savedTheme);
+        $(".mood-inner").removeClass('active');
+        var $target = $(".mood-inner." + savedTheme);
         $target.addClass('active');
         index = $target.index();
     }
-    var labSwiper = new Swiper(".labSwiper", {
-       slidesPerView: 3,
-       centeredSlides: true,
-       spaceBetween: 10,
-       grabCursor: true,
-       pagination: {
-         el: ".swiper-pagination",
-         clickable: true,
-       },
-     });
-    labSwiper.slideToLoop(index);
-	
 	//글자 스르륵
 	var observer = new IntersectionObserver(entries => {
 	entries.forEach(entry => {
@@ -290,16 +278,55 @@ function goKakaoNavi() {
 function applyTheme(themeName) {
     document.body.className = 'theme-' + themeName;
     localStorage.setItem('user-theme', themeName);
-    document.querySelectorAll('.swiper-slide').forEach(card => {
+    document.querySelectorAll('.mood-inner').forEach(card => {
         card.classList.remove('active');
     });
     event.currentTarget.classList.add('active');
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+}
+
+function openMood(obj){
+	$("#dim-layer").addClass("show");
+    $("#mood-pop").addClass("show");
+    $("#mood-pop").css("opacity", 0);
     
-    // console.log("테마가 변경되었습니다!");
+    
+    $("#mood-pop").css("opacity", 1);
+}
+
+function closeMood(){
+	$("#dim-layer").removeClass("show");
+	$("#mood-pop").removeClass("show");
+}
+
+function shareKakao() {
+  Kakao.Share.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: '정진성·박지은 결혼식에 초대합니다',
+      description: '2026년 5월 16일 오전 11시\n문래 JK아트컨벤션 아트리움홀',
+      imageUrl: 'https://jieunsung.pages.dev/files/img/photo/main_yellow.jpg', // 미리보기 메인 사진
+      link: {
+        mobileWebUrl: 'https://jieunsung.pages.dev/',
+        webUrl: 'https://jieunsung.pages.dev/',
+      },
+    },
+    buttons: [
+      {
+        title: '모바일 청첩장 보기',
+        link: {
+          mobileWebUrl: 'https://jieunsung.pages.dev/',
+          webUrl: 'https://jieunsung.pages.dev/',
+        },
+      },
+      {
+        title: '위치 확인하기',
+        link: {
+          mobileWebUrl: 'https://jieunsung.pages.dev/#loc', // 오시는 길 섹션으로 바로 이동
+          webUrl: 'https://jieunsung.pages.dev/#loc',
+        },
+      },
+    ],
+  });
 }
 
 
@@ -323,7 +350,8 @@ function applyTheme(themeName) {
 			</div>
 		</div>
 	</div>
-	<div id="lettering"></div>
+	<div id="halfmoon"></div>
+	<div id="lettering" onclick="openMood();"></div>
 </section>
 
 
@@ -439,30 +467,6 @@ function applyTheme(themeName) {
 	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>
   </section>
   
-  <section id="lab" class="fade-section">
-  <h3>무드 선택</h3>
-  <div class="labSwiper">
-	  <div class="swiper-wrapper">
-	    <div class="swiper-slide default active" onclick="applyTheme('default')">
-	      <div class="color-dot default"></div>
-	      <span class="mood-lab">#mood1</span>
-	    </div>
-	    <div class="swiper-slide dark" onclick="applyTheme('dark')">
-	      <div class="color-dot dark"></div>
-	      <span class="mood-lab">#mood2</span>
-	    </div>
-	    <div class="swiper-slide forest" onclick="applyTheme('forest')">
-	      <div class="color-dot forest"></div>
-	      <span class="mood-lab">#mood3</span>
-	    </div>
-	    <div class="swiper-slide pink" onclick="applyTheme('pink')">
-	      <div class="color-dot pink"></div>
-	      <span class="mood-lab">#mood4</span>
-	    </div>
-	  </div>
-  </div>
-  </section>
-  
   <section id="contribution" class="fade-section">
   <h3>마음 전하실 곳</h3>
   <div class="description-msg">
@@ -505,7 +509,30 @@ function applyTheme(themeName) {
 
 </div>
 <div id="dim-layer"></div>
-<div id="gallery-pop">
+<div class="popup" id="mood-pop">
+	<div id="lab">
+	<div class="close-pop black" onclick="closeMood();"></div>
+	  <div class="mood-outer">
+	    <div class="mood-inner" onclick="applyTheme('default')">
+	      <div class="color-dot default"></div>
+	      <span class="mood-lab">#mood1</span>
+	    </div>
+	    <div class="mood-inner dark" onclick="applyTheme('dark')">
+	      <div class="color-dot dark"></div>
+	      <span class="mood-lab">#mood2</span>
+	    </div>
+	    <div class="mood-inner forest" onclick="applyTheme('forest')">
+	      <div class="color-dot forest"></div>
+	      <span class="mood-lab">#mood3</span>
+	    </div>
+	    <div class="mood-inner pink" onclick="applyTheme('pink')">
+	      <div class="color-dot pink"></div>
+	      <span class="mood-lab">#mood4</span>
+	    </div>
+	  </div>
+	</div>
+</div>
+<div class="popup" id="gallery-pop">
 <div class="close-pop" onclick="closeGallery();"></div>
 	<div class="swiper"  style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"><!--  style="width:100%; height:100%;" -->
 		<div class="swiper-wrapper">
