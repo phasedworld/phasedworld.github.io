@@ -492,7 +492,7 @@ body:not(.theme-dark) .d-day::after, body:not(.theme-forest) .d-day::after
 
 #lab{
 	background:rgba(255,255,255,1);
-	width:90%; height:50%;
+	width:90%; height:55%;
 	display:flex;
 	justify-content:center; align-items:center;
 	position:relative;
