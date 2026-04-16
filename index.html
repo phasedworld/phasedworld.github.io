@@ -124,6 +124,7 @@ $(function(){
    	    alert("소중한 사진 감사합니다! 예쁘게 간직할게요. ❤️");
    	 	$("#upload-btn").text("업로드 완료!");
    	 	$("#upload-status").text("성공적으로 전달되었습니다.");
+   	 	$("#upload-btn").prop("disabled",false);
    	  } catch (err) {
    	    console.error(err);
    	    alert("업로드 중 오류가 발생했습니다. 다시 시도해주세요.");
