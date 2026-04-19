@@ -300,13 +300,25 @@ function closeMood(){
 }
 
 function shareKakao() {
-	  // 카카오톡 메시지 템플릿 ID 호출
-	  Kakao.Share.sendCustom({
-	    templateId: 131711,
-	    templateArgs: {
-	    },
-	  });
-	}
+  // 카카오톡 메시지 템플릿 ID 호출
+  Kakao.Share.sendCustom({
+    templateId: 131711,
+    templateArgs: {
+    },
+  });
+}
+
+function openVideoPop() {
+    $("#video-iframe").attr("src", "./video.html"); // 팝업 열릴 때 소스 로드
+    $("#video-pop").addClass("show");
+    $("#dim-layer").addClass("show"); // 기존 갤러리에서 쓰던 딤 사용
+}
+
+function closeVideoPop() {
+    $("#video-pop").removeClass("show");
+    $("#dim-layer").removeClass("show");
+    $("#video-iframe").attr("src", ""); // 닫을 때 영상 정지
+}
 
 
 </script>
@@ -453,6 +465,16 @@ function shareKakao() {
   	</div>
   </section>
   
+  <section id="video-section" class="fade-section text-center">
+    <h3>식전영상</h3>
+    <p class="video-msg">저희의 이야기를 담았습니다 :<br/><br/></p>
+    <div class="video-thumb-container" onclick="openVideoPop();">
+        <div class="video-play-btn">
+            <span class="play-icon">▶</span>
+        </div>
+        
+    </div>
+</section>
   <section id="snap" class="fade-section">
   <h3>스냅</h3>
   <div class="description-msg">
@@ -547,5 +569,13 @@ function shareKakao() {
 	  <div class="swiper-button-prev"></div>
 	  <div class="swiper-button-next"></div>
 	</div>
+</div>
+<div id="video-pop" class="popup">
+    <div class="close-pop" onclick="closeVideoPop();"></div>
+    <div class="video-pop-body">
+        <video controls autoplay playsinline poster="./files/video/wedding_movie_cover.jpg">
+		    <source src="./files/video/wedding_movie.mp4" type="video/mp4">
+		</video>
+    </div>
 </div>
 </body></html>
