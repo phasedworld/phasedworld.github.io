@@ -659,5 +659,5 @@ body.theme-pink #lettering {
 }
 
 #video-pop .video-pop-body video{
-	width:100%;
+	max-width:100%;
 }
