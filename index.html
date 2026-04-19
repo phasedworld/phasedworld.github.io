@@ -309,7 +309,7 @@ function shareKakao() {
 }
 
 function openVideoPop() {
-    $("#video-iframe").attr("src", "./files/video/wedding_movie.mp4"); // 팝업 열릴 때 소스 로드
+    $("#video-iframe").attr("src", "https://firebasestorage.googleapis.com/v0/b/jieunsung-8c314.firebasestorage.app/o/video%2Fwedding_movie.mp4?alt=media&token=c5dbd10d-8b3c-4df9-85c7-0f51a76f0c72"); // 팝업 열릴 때 소스 로드
     $("#video-pop").addClass("show");
     $("#dim-layer").addClass("show"); // 기존 갤러리에서 쓰던 딤 사용
 }
@@ -574,7 +574,7 @@ function closeVideoPop() {
     <div class="close-pop" onclick="closeVideoPop();"></div>
     <div class="video-pop-body">
         <video id="video-iframe" controls autoplay poster="./files/video/wedding_movie_cover.jpg">
-		    <source src="./files/video/wedding_movie.mp4" type="video/mp4">
+		    <source src="https://firebasestorage.googleapis.com/v0/b/jieunsung-8c314.firebasestorage.app/o/video%2Fwedding_movie.mp4?alt=media&token=c5dbd10d-8b3c-4df9-85c7-0f51a76f0c72" type="video/mp4">
 		</video>
     </div>
 </div>
