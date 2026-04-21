@@ -309,15 +309,17 @@ function shareKakao() {
 }
 
 function openVideoPop() {
-    $("#video-iframe").attr("src", "https://firebasestorage.googleapis.com/v0/b/jieunsung-8c314.firebasestorage.app/o/video%2Fwedding_movie.mp4?alt=media&token=c5dbd10d-8b3c-4df9-85c7-0f51a76f0c72"); // 팝업 열릴 때 소스 로드
+    $("#video-iframe").attr("src", "https://www.youtube.com/embed/영상ID?autoplay=1&mute=0&rel=0&enablejsapi=1&origin=https://jieunsung.pages.dev"); // 팝업 열릴 때 소스 로드
     $("#video-pop").addClass("show");
-    $("#dim-layer").addClass("show"); // 기존 갤러리에서 쓰던 딤 사용
+    $("#dim-layer").addClass("show");
 }
 
 function closeVideoPop() {
+	var videoIframe = $("#video-iframe");
+    videoIframe.attr("src", ""); 
+    // 2. 팝업 레이어 숨기기
     $("#video-pop").removeClass("show");
     $("#dim-layer").removeClass("show");
-    $("#video-iframe").attr("src", ""); // 닫을 때 영상 정지
 }
 
 
