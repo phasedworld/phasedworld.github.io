@@ -309,13 +309,13 @@ function shareKakao() {
 }
 
 function openVideoPop() {
-    $("#video-iframe").attr("src", "https://www.youtube.com/embed/fRgRQucUou0?autoplay=1&mute=0&rel=0&enablejsapi=1&origin=https://jieunsung.pages.dev"); // 팝업 열릴 때 소스 로드
+    $("#video-pop iframe").attr("src", "https://www.youtube.com/embed/fRgRQucUou0?autoplay=1&mute=0&rel=0&enablejsapi=1&origin=https://jieunsung.pages.dev"); // 팝업 열릴 때 소스 로드
     $("#video-pop").addClass("show");
     $("#dim-layer").addClass("show");
 }
 
 function closeVideoPop() {
-	var videoIframe = $("#video-iframe");
+	var videoIframe = $("#video-pop iframe");
     videoIframe.attr("src", ""); 
     // 2. 팝업 레이어 숨기기
     $("#video-pop").removeClass("show");
