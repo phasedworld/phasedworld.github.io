@@ -374,7 +374,7 @@ function closeVideoPop() {
   <!-- 예식 안내 -->
   <section id="info" class="fade-section">
     <h3>예식 안내</h3>
-
+<!-- 
     <div class="calendar-wrapper">
       <table class="calendar" id="calendar">
         <thead>
@@ -401,8 +401,24 @@ function closeVideoPop() {
         </tbody>
       </table>
     </div>
+     -->
     <div class="calendar-info info-date">2026.05.16 토요일 오전 11시</div>
     <div class="calendar-info info-place">문래 JK아트컨벤션 | 아트리움홀</div>
+  </section>
+  
+  <section id="snap" class="fade-section">
+  <h3>스냅</h3>
+  <div class="description-msg">
+  신랑신부의 행복한 순간을 담아주세요.<br/>
+  예식 당일, 아래 버튼을 통해 사진 또는 동영상을 올려주세요.<br/>
+  많은 참여 부탁드리겠습니다.<br/>
+  <br/>
+  </div>
+  <input type="file" id="hidden-file-input" multiple accept="image/*, video/*" style="display:none;">
+	<button type="button" class="btn btn-round sanserif" id="upload-btn" onclick="triggerUpload();">
+	    사진 공유하기
+	</button>
+	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>
   </section>
 
   <!-- 위치 -->
@@ -478,21 +494,6 @@ function closeVideoPop() {
         
     </div>
 </section>
-  <section id="snap" class="fade-section">
-  <h3>스냅</h3>
-  <div class="description-msg">
-  신랑신부의 행복한 순간을 담아주세요.<br/>
-  예식 당일, 아래 버튼을 통해 사진 또는 동영상을 올려주세요.<br/>
-  많은 참여 부탁드리겠습니다.<br/>
-  <br/>
-  </div>
-  <input type="file" id="hidden-file-input" multiple accept="image/*, video/*" style="display:none;">
-	<button type="button" class="btn btn-round sanserif" id="upload-btn" onclick="triggerUpload();">
-	    사진 공유하기
-	</button>
-	<div id="upload-status" style="font-size:0.8rem; color:#888; margin-top:8px; display:none;"></div>
-  </section>
-  
   <section id="contribution" class="fade-section">
   <h3>마음 전하실 곳</h3>
   <div class="description-msg">
